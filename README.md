@@ -1,5 +1,7 @@
 # Diffless: The AI-Augmented Git Workflow
 
+**Version:** v0.0.1
+
 ![Diffless Concept](assets/infographic.webp)
 
 Welcome to the **Diffless Workflow** repository. This project proposes a paradigm shift in version control and development lifecycles in the era of AI-augmented IDEs (such as Google Antigravity, Claude Code, Cursor, Codex, etc.).
