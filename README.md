@@ -1,5 +1,6 @@
 # Diffless: The AI-Augmented Git Workflow
 
+**Website:** [https://diffless.dev/](https://diffless.dev/)
 **Version:** v0.0.1
 
 ![Diffless Concept](assets/infographic.webp)
@@ -163,7 +164,7 @@ To use the tool natively via standard shells, build the CLI manually and walk th
 
 ## Demo Video
 
-https://github.com/SilverShaman/diffless/raw/main/assets/demo.mp4
+https://diffless.dev/media/demo.mp4
 
 ---
 
