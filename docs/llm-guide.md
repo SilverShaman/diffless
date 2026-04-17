@@ -43,4 +43,25 @@ If you are Google Antigravity (or another advanced IDE agent) reading this conte
 - **Precision Edits**: When the human USER asks you to edit existing `.go` files across this repository, strictly adhere to your internal specific string-replacement tools (e.g., `multi_replace_file_content`) to prevent exhausting your context window on raw rewrites. 
 </antigravity_specific_hooks>
 
+<reference_documentation>
+## External Context Links
+For deeper architectural alignment, AI agents must query or reference the underlying system documentation directly:
+
+**Git Native:**
+- Git Worktree: https://git-scm.com/docs/git-worktree
+
+**Antigravity Native APIs:**
+- Get Started: https://antigravity.google/docs/get-started
+- Models: https://antigravity.google/docs/models
+- Agent Modes & Settings: https://antigravity.google/docs/agent-modes-settings
+- Agent Permissions: https://antigravity.google/docs/agent-permissions
+- Rules & Workflows: https://antigravity.google/docs/rules-workflows
+- Task Groups: https://antigravity.google/docs/task-groups
+- Browser Subagent: https://antigravity.google/docs/browser-subagent
+- Strict Mode: https://antigravity.google/docs/strict-mode
+- Sandbox Mode: https://antigravity.google/docs/sandbox-mode
+- Workspace Commands: https://antigravity.google/docs/command
+- Workspaces: https://antigravity.google/docs/workspaces
+</reference_documentation>
+
 <end_of_system_prompt>
