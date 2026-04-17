@@ -36,10 +36,24 @@ To see the full architectural progression of the Diffless CLI, review the comple
 ---
 
 ## Phase 12: Expanded Sandboxing Ecosystems [PLANNED]
-**Goal:** Broaden the `diffless run --jail` capabilities beyond native kernel primitives to support diverse container and reproducible environments.
-- **NixOS Integration:** Implement native `systemd-nspawn` and `bubblewrap` (`bwrap`) providers to allow developers to leverage strict, declarative Nix sandbox configurations.
-- **Docker-Based Isolation:** Add an OCI-compliant provider targeting the Docker Engine. This allows teams already using DevContainers or Dockerized workflows to jail AI agents inside standard, heavy-duty Docker containers.
-- **Lightweight Containerization (Bubblewrap):** Provide a daemon-less, super lightweight isolation backend using `bwrap` for Linux users who want microsecond startup times, unprivileged execution, and extremely low resource overhead compared to a full Docker daemon.
+**Goal:** Make it easy for developers to securely jail AI agents using the container tools they already know and use, without forcing them to learn complex native OS primitives.
+
+To support different team workflows, the `diffless run --jail` command will support three distinct container ecosystems:
+
+1. **Docker-Based Isolation (The Industry Standard)**
+   - **What it is:** Runs the AI agent inside a standard Docker container.
+   - **Why use it:** Perfect for teams already using Docker, Docker Compose, or DevContainers. It provides a familiar environment where the agent has access to all standard Linux utilities, but cannot escape into your host machine.
+   - **Developer Impact:** "If you know Docker, you know this. It just works."
+
+2. **Lightweight Containerization via Bubblewrap (The Fast & Lean Option)**
+   - **What it is:** Uses `bwrap` to create a virtually invisible, instant sandbox without needing a background daemon (like Docker).
+   - **Why use it:** Docker can be heavy and slow to start. Bubblewrap creates a secure boundary in microseconds using virtually zero extra memory. It's the same technology that powers Flatpak.
+   - **Developer Impact:** "For developers who want maximum security without sacrificing laptop battery life or speed."
+
+3. **NixOS Integration (The Reproducible Option)**
+   - **What it is:** Deep support for NixOS using `systemd-nspawn` (for full system containers) and `bubblewrap` (for app-level jails).
+   - **Why use it:** NixOS users demand strict, declarative reproducibility. This integration allows Diffless to respect `nix-shell` environments and exact dependency closures, ensuring the AI agent operates in the exact same mathematical environment as the human.
+   - **Developer Impact:** "Guarantees 'it works on my machine' means 'it works on the AI's machine too'."
 
 ---
 
