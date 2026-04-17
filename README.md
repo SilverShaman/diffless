@@ -50,7 +50,7 @@ To make this workflow effortless for both developers and AI, we are actively bui
   The main entry point for the compiled Go-based `diffless` CLI.
 - **`internal/`**  
   The core Go logic housing `git` worktree wrappers, `antigravity` API integrations, and `cli` command routing.
-- **`plan.md`**  
+- **`docs/plan.md`**  
   The step-by-step implementation plan for building the `diffless` CLI and enabling true physical agent sandboxing.
 - **`docs/architecture.md`**  
   The high-level system topology outlining the interplay between the Go CLI, git worktrees, and IDE interceptors.
@@ -66,7 +66,7 @@ To make this workflow effortless for both developers and AI, we are actively bui
 1. Check out the infographic above for a clear visual representation of this shift.
 2. Read the full problem statement and concept in [Concept](docs/concept.md).
 3. Understand the underlying system design by reading the [Architecture](docs/architecture.md).
-4. Follow the CLI architectural steps detailed in the [Diffless Workflow Plan](plan.md).
+4. Follow the CLI architectural steps detailed in the [Diffless Workflow Plan](docs/plan.md).
 5. Watch the demo video below to see the transition of standard diffing over to Artifacts.
 
 ## Usage Guide
@@ -131,4 +131,4 @@ This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**
 
 We chose GPL-3.0 deliberately: we want to foster a thriving, organic open-source community that builds the standard for AI Git tooling. This license guarantees that the codebase will forever remain open—no commercial entity can fork this project into a closed-source, proprietary competitor. If you modify it, you share it!
 
-We actively welcome contributors! Check out our [Implementation Plan](plan.md) to see where the architecture is heading, and feel free to open a PR.
+We actively welcome contributors! Check out our [Implementation Plan](docs/plan.md) to see where the architecture is heading, and feel free to open a PR.

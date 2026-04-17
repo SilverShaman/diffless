@@ -24,3 +24,12 @@ go.work.sum
 .DS_Store
 .idea/
 .vscode/
+
+# Local Environment
+.env
+.env.*
+.gemini/
+.antigravity/
+
+# Test Outputs
+test-results.json
