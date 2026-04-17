@@ -72,9 +72,9 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
 - **Global Skill Installation:** Configure the Antigravity skill payload to install into the IDE's global configuration directory (`~/.gemini/antigravity/skills`) rather than the local project structure. This guarantees the `@diffless` interceptor functions universally for any workspace.
 - **Action for Developers:** Run a global install bootstrap on Linux Mint that injects the CLI and Antigravity agent skills, unlocking zero-trust isolated sandboxing in any standard `.git` project.
 
-## Phase 9: Cross-Platform Packaging & Distribution [FUTURE]
+## Phase 9: Cross-Platform Packaging & Distribution [COMPLETED]
 **Goal:** Expand package support beyond Linux Mint to other major platforms.
-- **Broader Package Managers:** Implement global package structures for macOS (Homebrew), generic fallback scripts (curl), and Windows distribution.
+- **Broader Package Managers:** Implement global package structures for macOS (Homebrew), generic Linux (Snap/Flatpak), generic fallback scripts (curl), and Windows distribution.
 
 ---
 
@@ -114,6 +114,5 @@ diffless/
 ---
 
 ## Next Steps
-- The Diffless Workflow CLI architecture (Phases 1-8) is **100% COMPLETE**.
-- **ACTIVE:** Implement Phase 9 (Cross-Platform Packaging & Distribution) to expand beyond Linux Mint.
-- Move towards marketing outreach, community distribution via Brew/curl setups, and broad testing adoption.
+- The Diffless Workflow CLI architecture (Phases 1-9) is **100% COMPLETE**.
+- **ACTIVE:** Move towards marketing outreach, community distribution via Brew/curl setups, and broad testing adoption.

@@ -56,17 +56,36 @@ We are implementing this CLI via a structured multi-phase architecture plan. You
 
 ## Installation
 
-### Linux Mint / APT (Recommended Default)
-The official global deployment standard is built natively for Linux Mint. You can compile the `.deb` package securely and register it system-wide by executing:
 
+### Cross-Platform Installation
+
+Diffless supports native packaging across major operating systems to securely bind the CLI and register the Antigravity IDE skill globally.
+
+**macOS (Homebrew):**
+```bash
+brew install ./packaging/homebrew/diffless.rb
+diffless-install-skill
+```
+
+**Windows (PowerShell):**
+```powershell
+.\packaging\windows\install.ps1
+```
+
+**Linux Mint / Debian (APT):**
 ```bash
 cd packaging/mint
 ./install.sh
 ```
-This script will safely bind the CLI globally over `$PATH` and register the Antigravity IDE skill precisely to `~/.gemini/antigravity/skills/diffless/`.
 
-### Generic Global Installation (Fallback Phase)
-For non-Mint systems, use the standard fallback bootstrap directly in the repository root:
+**Generic Linux (Snap):**
+```bash
+cd packaging/snap
+snapcraft && sudo snap install diffless_*.snap --dangerous --classic
+```
+
+**Fallback Generic Script (Bash):**
+For any other system, use the standard fallback bootstrap directly in the repository root:
 ```bash
 ./install.sh
 ```

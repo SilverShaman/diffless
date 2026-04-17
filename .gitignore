@@ -36,5 +36,9 @@ test-results.json
 
 # Packaging Artifacts
 *.deb
+*.snap
 packaging/mint/diffless_bin
 packaging/mint/diffless_*/
+packaging/snap/parts/
+packaging/snap/stage/
+packaging/snap/prime/

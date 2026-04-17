@@ -1,0 +1,21 @@
+name: diffless
+base: core22
+version: '0.0.1'
+summary: AI-augmented git workflow CLI builder
+description: |
+  Diffless integrates directly with Git Worktrees to provide safely verified
+  physical sandboxes for autonomous AI agents like Google Antigravity.
+
+grade: stable
+confinement: classic
+
+parts:
+  diffless:
+    plugin: go
+    source: .
+    build-packages:
+      - golang
+
+apps:
+  diffless:
+    command: bin/diffless

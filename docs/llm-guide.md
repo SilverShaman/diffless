@@ -37,7 +37,8 @@ As an Antigravity Agent, strictly adhere to these developmental practices:
 2. **Be Production-Ready:** There are no placeholders. When writing or modifying Go code, output fully functional logic, including error handling. Do not leave `// TODO` comments.
 3. **Validate With Tests:** When modifying CLI components or Antigravity API boundaries, always run `go test -v ./...` to guarantee you have not fractured the isolation constraints or sandbox lock-down capabilities.
 4. **License Preservation:** Never mutate or remove the GPL-3.0 License.
-5. **Protect Global State:** Remember that the CLI impacts `.git` databases and global IDE state (like `~/.gemini/antigravity/skills/diffless.sh`). Be delicate with repository-level file removals or deep tree modifications.
+5. **Protect Global State:** Remember that the CLI impacts `.git` databases and global IDE state (like `~/.gemini/antigravity/skills/diffless.sh` or `.bat`). Be delicate with repository-level file removals or deep tree modifications.
+6. **Cross-Platform Compatibility:** The CLI is distributed across macOS (Homebrew), Windows (PowerShell), and Linux (Snap/APT). Any new functionality must be OS-agnostic in Go and must correctly update the global Antigravity Skill hooks for the respective OS.
 </agent_interaction_rules>
 
 <reference_documentation>
