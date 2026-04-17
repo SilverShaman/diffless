@@ -40,7 +40,9 @@ To make this workflow effortless for both developers and AI, we are actively bui
 - [x] **Phase 6: Natural Language Execution**
   - Maps the CLI bounds into functional execution schemas natively accessible by autonomous AI reasoning models.
 - [x] **Phase 7: Antigravity Skill Bindings**
-  - Wraps the exported Phase 6 runtime natively into a local `.gemini/skills/diffless.sh` execution module exposing raw `@diffless` IDE chat commands.
+  - Wraps the exported Phase 6 runtime natively exposing raw `@diffless` IDE chat commands.
+- [x] **Phase 8: Global Packaging & Deployment**
+  - Universally deploys the `diffless` binary and the IDE interceptor payload (`.gemini/skills/`) system-wide, enabling zero-trust workspaces across ANY local Git repository.
 
 ## Repository Structure
 
@@ -50,6 +52,8 @@ To make this workflow effortless for both developers and AI, we are actively bui
   The core Go logic housing `git` worktree wrappers, `antigravity` API integrations, and `cli` command routing.
 - **`plan.md`**  
   The step-by-step implementation plan for building the `diffless` CLI and enabling true physical agent sandboxing.
+- **`docs/architecture.md`**  
+  The high-level system topology outlining the interplay between the Go CLI, git worktrees, and IDE interceptors.
 - **`docs/concept.md`**  
   The foundational theory detailing why TBD evolved for humans, and why `git worktree` sandboxes are necessary for AI.
 - **`docs/Diffless.pdf`**  
@@ -61,8 +65,9 @@ To make this workflow effortless for both developers and AI, we are actively bui
 
 1. Check out the infographic above for a clear visual representation of this shift.
 2. Read the full problem statement and concept in [Concept](docs/concept.md).
-3. Follow the CLI architectural steps detailed in the [Diffless Workflow Plan](plan.md).
-4. Watch the demo video below to see the transition of standard diffing over to Artifacts.
+3. Understand the underlying system design by reading the [Architecture](docs/architecture.md).
+4. Follow the CLI architectural steps detailed in the [Diffless Workflow Plan](plan.md).
+5. Watch the demo video below to see the transition of standard diffing over to Artifacts.
 
 ## Usage Guide
 
@@ -80,8 +85,8 @@ Because Diffless ships directly with native `.gemini/skills/` proxy bindings, it
 To use the tool natively via standard shells, build the CLI manually and walk through the identical Agent lifecycle:
 
 ```bash
-# Compile and install the CLI
-go build -o diffless cmd/diffless/main.go
+# Compile and install the CLI globally (including Antigravity interceptors)
+./install.sh
 
 # 1. Start a New Feature Sandbox
 # Creates an isolated, hidden physical Git worktree directory.
