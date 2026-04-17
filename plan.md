@@ -23,7 +23,7 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
   - `diffless audit`: Scans the agent's worktree for unapproved binary executions or anomalous outbound network traffic patterns.
 - **Action for AI Agents:** Agents operate under a Zero-Trust assumption. They must utilize the ephemeral keys provided in the sandbox `.env` and cannot route out to read the parent developer's global `~/.ssh` or `~/.aws` configurations.
 
-## Phase 3: Test Harness for Core Sandboxing (Phases 1 & 2)
+## Phase 3: Test Harness for Core Sandboxing (Phases 1 & 2) [COMPLETED]
 **Goal:** Build an automated execution suite in Go (`go test`) that mathematically proves the physical sandboxing and security constraints function safely against a real `.git` database.
 - **Testing Implementation:**
   - **Isolated Test Data:** The test framework will dynamically generate a temporary local Git repository utilizing Go's `t.TempDir()`. This guarantees the mock `.git` repository safely exists in the OS temp directory, strictly ensuring the test environment never accidentally leaks or tracks into the main `diffless` repository.
@@ -93,5 +93,5 @@ diffless/
 ---
 
 ## Next Steps
-- Begin implementation of Phase 3 (`go test` harness for Sandboxing and Security logic).
-- Construct temporary repository spawning architecture to avoid mutating the main workspace during testing.
+- Begin implementation of Phase 4: Autonomous Semantic Merging (`diffless sync`).
+- Hook up an LLM API client in Go to process textual merge conflicts synthetically.
