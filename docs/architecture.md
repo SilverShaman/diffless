@@ -26,3 +26,12 @@ Diffless re-architects how Pull Requests are formulated.
 - **Diff Resolution Layer:** Resolves massive refactors textually by passing broken patches through an LLM to interpret logical intent rather than simple line matching.
 - **Generative Artifact Assembly:** When a feature is completed, the agent triggers `diffless propose`. Natively compiled outputs (like Subagent UI testing `.mp4` videos, Markdown execution logs, and Mermaid architecture diagrams) securely track to `.diffless-artifacts/`. 
 - **PR Aggregation:** The finalized PR displays the summarized artifacts immediately to human reviewers rather than thousands of lines of unreadable code drift.
+
+## 5. Cross-Platform OS Jailing (Advanced Hardening)
+While physical `git worktree` isolation prevents repository drift, Diffless also supports deep, OS-level cryptographic containment via the `diffless run` command and its optional `--jail` flag.
+- **Unified Security Interface:** The core CLI exposes a single, OS-agnostic `JailProvider` interface to minimize code divergence.
+- **Native Primitives:** Depending on the compiled host, it dynamically enforces boundaries using the OS's deepest primitives:
+  - **Linux:** Kernel Namespaces (`CLONE_NEWNS`, `CLONE_NEWNET`) and eBPF syscall filtering.
+  - **Windows:** Host Compute System (HCS), AppContainer capability profiles, and Windows Filtering Platform (WFP).
+  - **macOS:** App Sandbox (`sandbox-exec` profiles) and Endpoint Security (ES).
+- **Opt-In Execution:** Because full OS-level isolation can complicate basic local development workflows, it is strictly opt-in (`--jail`). If omitted, executions safely fall back to the standard Phase 2 user-space boundary (0700 file permissions and `.env` stripping).

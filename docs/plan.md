@@ -8,73 +8,30 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
 
 ---
 
-## Phase 1: The Diffless CLI & Worktree Sandboxing [COMPLETED]
-**Goal:** Build a lightweight CLI that manages physical isolation via `git worktree`.
-- **Command Implementation:**
-  - `diffless start <task-id>`: Automatically runs `git worktree add -b <task-id> ../.diffless-workspaces/<task-id>`. This creates a physically isolated directory sharing the main `.git` database.
-  - `diffless switch <task-id>`: Navigates the terminal or AI environment to the isolated worktree.
-  - `diffless clean`: Prunes and removes completed worktrees using `git worktree remove` and `git worktree prune`.
-- **Action for AI Agents:** Agents execute `diffless start` to safely experiment, install conflicting dependencies, or crash the local server in their own physical directory without impacting the developer's trunk.
+## Historical Information: Completed Phases (1-10)
+To see the full architectural progression of the Diffless CLI, review the completed foundational phases below:
 
-## Phase 2: Security Hardening & Zero-Trust Containment [COMPLETED]
-**Goal:** Mathematically enforce the security boundaries of the generated agent sandboxes to prevent privilege escalation or credential harvesting.
-- **Command Implementation:**
-  - `diffless lockdown <task-id>`: Hardens the sandbox directory permissions (e.g. `chmod 700`). Automatically generates an ephemeral `.env` stripping out high-privilege production API keys in favor of safe development keys.
-  - `diffless audit`: Scans the agent's worktree for unapproved binary executions or anomalous outbound network traffic patterns.
-- **Action for AI Agents:** Agents operate under a Zero-Trust assumption. They must utilize the ephemeral keys provided in the sandbox `.env` and cannot route out to read the parent developer's global `~/.ssh` or `~/.aws` configurations.
+<details>
+<summary>Click to expand historical phases (1-10)</summary>
 
-## Phase 3: Test Harness for Core Sandboxing (Phases 1 & 2) [COMPLETED]
-**Goal:** Build an automated execution suite in Go (`go test`) that mathematically proves the physical sandboxing and security constraints function safely against a real `.git` database.
-- **Testing Implementation:**
-  - **Isolated Test Data:** The test framework will dynamically generate a temporary local Git repository utilizing Go's `t.TempDir()`. This guarantees the mock `.git` repository safely exists in the OS temp directory, strictly ensuring the test environment never accidentally leaks or tracks into the main `diffless` repository.
-  - **Command Verification:** It will programmatically run `diffless start mock-task`, verifying the `git worktree` spawns securely out of bounds.
-  - **Security Assertion:** It will execute `diffless lockdown mock-task` and algorithmically assert that path permissions restrict to `0700` and the ephemeral `.env` generates securely.
-  - **Detailed Reporting:** The framework will enforce verbose capturing (e.g., executing `go test -v -json`). This captures highly detailed, structured test results for every command execution, allowing CI/CD pipelines (and AI agents) to precisely parse why a native operation failed.
-  - **Teardown:** Finally, it will invoke `diffless clean mock-task` to ensure native directory removal and Git graph pruning.
-- **Action for CI/CD:** Ensures that future Diffless CLI builds cannot regress the isolation boundary, relying on the detailed test output logs as the authoritative truth for agents.
+1. **Phase 1: The Diffless CLI & Worktree Sandboxing** - Built the lightweight CLI that manages physical isolation via `git worktree` (`start`, `switch`, `clean`).
+2. **Phase 2: Security Hardening & Zero-Trust Containment** - Mathematically enforced security boundaries (`chmod 700`) and ephemeral `.env` stripping (`lockdown`, `audit`).
+3. **Phase 3: Test Harness for Core Sandboxing** - Built an automated execution suite in Go (`go test`) proving physical sandboxing constraints.
+4. **Phase 4: Autonomous Semantic Merging** - Abstracted branch drift and complex merges inside the CLI (`sync`).
+5. **Phase 5: Artifact-Driven Reviews** - Automatically compiled rich PRs avoiding raw code-diff fatigue (`propose`).
+6. **Phase 6: Natural Language Execution (Agent Skills)** - Made the CLI usable as native "tools" for LLMs via JSON schemas.
+7. **Phase 7: Antigravity Skill Bindings** - Integrated the CLI directly into Google Antigravity as natively callable "Skills".
+8. **Phase 8: Linux Mint Packaging & Deployment** - Packaged and deployed the `diffless` CLI globally for Linux Mint.
+9. **Phase 9: Cross-Platform Packaging & Distribution** - Expanded package support to macOS (Homebrew) and Windows.
+10. **Phase 10: Advanced Sandbox Hardening** - Unified cross-platform OS-level containment natively (Linux Namespaces, macOS Sandbox, Windows AppContainer) via an opt-in `--jail` execution flag.
 
-## Phase 4: Autonomous Semantic Merging [COMPLETED]
-**Goal:** Abstract away branch drift and complex merges inside the CLI.
-- **Command Implementation:**
-  - `diffless sync`: The CLI checks if the current worktree has drifted from `main`. If significant textual conflicts exist, the CLI pipes the conflicting patches to the AI.
-- **Testing Implementation:**
-  - The `go test` harness invokes `diffless sync mock-task`, validating that the underlying `internal/ai` pipeline correctly processes and resolves branch conflict patches logically without failure, bypassing native Git text-merge failures.
-- **Action for AI Agents:** The agent uses its semantic understanding to rewrite conflicting blocks based on intentionality, automatically resolving merges inside its isolated worktree.
+</details>
 
-## Phase 5: Artifact-Driven Reviews [COMPLETED]
-**Goal:** Automatically compile rich PRs avoiding raw code-diff fatigue.
-- **Command Implementation:**
-  - `diffless propose`: Rather than a standard `git push`, the CLI orchestrates the AI to generate an **Artifact Package**.
-- **Testing Implementation:**
-  - The test framework logically ensures that `diffless propose` successfully spawns the internal directory structures (`.diffless-artifacts`) within the sandbox and algorithmically maps the PR validation (`.mp4`), trace logic (`.mermaid`), and notes (`.md`).
-- **Action for AI Agents:** When triggered, the AI must inspect its worktree changes and generate:
-  1. A `markdown` execution plan detailing what was achieved.
-  2. A `mermaid` architecture diagram highlighting system changes.
-  3. Evidence of success (e.g., triggering a headless browser recording to output an `.mp4`).
-  The CLI bundles these files into the PR description.
-
-## Phase 6: Natural Language Execution (Agent Skills) [COMPLETED]
-**Goal:** Make the CLI usable as native "tools" for LLMs.
-- **Action for Developers:** Use intuitive language for complex repo operations (e.g., *"Antigravity, diffless start a new feature for the login portal, build the UI, and diffless propose it when you are done."*)
-- **Implementation Considerations:**
-  - Provide a machine-readable JSON schema for the `diffless` CLI so that AI agents can natively invoke `start`, `sync`, `propose`, and `clean` with zero hallucination.
-
-## Phase 7: Antigravity Skill Bindings [COMPLETED]
-**Goal:** Integrate the CLI directly into Google Antigravity as natively callable "Skills".
-- **Action for Developers:** Use the Antigravity interface or the chat input (e.g. `start feature via diffless`) to rapidly invoke CLI abstractions without ever touching a terminal.
-- **Implementation Considerations:**
-  - Author formal Antigravity Skill integration files (e.g., inside `~/.gemini/antigravity/skills/`) that bind the `diffless` CLI commands to the Antigravity execution context.
-  - Wire the IDE's Workspace API to automatically react to `diffless switch` directory transitions.
-
-## Phase 8: Linux Mint Packaging & Deployment [COMPLETED]
-**Goal:** Package and deploy the `diffless` CLI and Antigravity skills so they can be installed and used globally across any Git repository specifically on Linux Mint.
-- **CLI Distribution:** Compile the Go binary and build a standard Linux Mint package (e.g., APT/.deb) for system-wide access over `$PATH`. This will be the first default global package structure built.
-- **Global Skill Installation:** Configure the Antigravity skill payload to install into the IDE's global configuration directory (`~/.gemini/antigravity/skills`) rather than the local project structure. This guarantees the `@diffless` interceptor functions universally for any workspace.
-- **Action for Developers:** Run a global install bootstrap on Linux Mint that injects the CLI and Antigravity agent skills, unlocking zero-trust isolated sandboxing in any standard `.git` project.
-
-## Phase 9: Cross-Platform Packaging & Distribution [COMPLETED]
-**Goal:** Expand package support beyond Linux Mint to other major platforms.
-- **Broader Package Managers:** Implement global package structures for macOS (Homebrew), generic Linux (Snap/Flatpak), generic fallback scripts (curl), and Windows distribution.
+## Phase 11: Runtime Context & Documentation [PLANNED]
+**Goal:** Improve the help and documentation during runtime for `diffless` to drastically reduce developer onboarding friction.
+- **Context-Aware Help:** Overhaul the CLI's `-h` / `--help` flag to dynamically adjust its output based on the user's current environment (e.g., prioritizing `propose` and `sync` if invoked inside a sandbox, or `start` if invoked in the trunk).
+- **Interactive Terminal Guides:** Implement a `diffless guide` command that prints beautiful, rich-text walkthroughs of the Agent-Augmented Gitflow directly in the terminal, negating the need to constantly reference web documentation.
+- **Action for Developers & Agents:** Provides a completely self-documenting CLI experience, ensuring humans and AI agents always know what native actions are available and safe to execute in their current context.
 
 ---
 
@@ -114,5 +71,5 @@ diffless/
 ---
 
 ## Next Steps
-- The Diffless Workflow CLI architecture (Phases 1-9) is **100% COMPLETE**.
-- **ACTIVE:** Move towards marketing outreach, community distribution via Brew/curl setups, and broad testing adoption.
+- The Diffless Workflow CLI architecture (Phases 1-10) is **100% COMPLETE**.
+- **ACTIVE:** Implement Phase 11 (Runtime Context & Documentation), move towards marketing outreach, community distribution via Brew/curl setups, and broad testing adoption.

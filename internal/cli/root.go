@@ -36,4 +36,7 @@ func init() {
 
 	// Register commands generated for Phase 6
 	rootCmd.AddCommand(toolsCmd)
+
+	// Register commands generated for Phase 10
+	rootCmd.AddCommand(runCmd)
 }

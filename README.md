@@ -140,17 +140,20 @@ To use the tool natively via standard shells, build the CLI manually and walk th
 # Native context switch navigating your shell/IDE into the isolated environment.
 ./diffless switch feature-login
 
-# (AI/Developer builds the feature, tests logic, makes commits)
+# 4. (Optional) Execute in an OS-Level Jail
+# Run build scripts or AI tasks cryptographically bound via OS-native primitives.
+# Defaults to normal workspace isolation; use --jail to enforce deep OS-level boundaries.
+./diffless run feature-login --jail npm test
 
-# 4. Semantic Merge & Rebase
+# 5. Semantic Merge & Rebase
 # Resolves textual branch drift using intent-based AI logic rather than raw Git markers.
 ./diffless sync feature-login
 
-# 5. Generative Pull Request
+# 6. Generative Pull Request
 # Orchestrates UI video validation, markdown analysis, and mermaid system mapping.
 ./diffless propose feature-login
 
-# 6. Safe Teardown
+# 7. Safe Teardown
 # Natively purges the physical directory and cleanly prunes the Git tree references.
 ./diffless clean feature-login
 ```
