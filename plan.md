@@ -53,11 +53,18 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
   3. Evidence of success (e.g., triggering a headless browser recording to output an `.mp4`).
   The CLI bundles these files into the PR description.
 
-## Phase 6: Natural Language Execution (Agent Skills)
+## Phase 6: Natural Language Execution (Agent Skills) [COMPLETED]
 **Goal:** Make the CLI usable as native "tools" for LLMs.
 - **Action for Developers:** Use intuitive language for complex repo operations (e.g., *"Antigravity, diffless start a new feature for the login portal, build the UI, and diffless propose it when you are done."*)
 - **Implementation Considerations:**
   - Provide a machine-readable JSON schema for the `diffless` CLI so that AI agents can natively invoke `start`, `sync`, `propose`, and `clean` with zero hallucination.
+
+## Phase 7: Antigravity Skill Bindings
+**Goal:** Integrate the CLI directly into Google Antigravity as natively callable "Skills".
+- **Action for Developers:** Use the Antigravity interface or the chat input (e.g. `@diffless start feature`) to rapidly invoke CLI abstractions without ever touching a terminal.
+- **Implementation Considerations:**
+  - Author formal Antigravity Skill integration files (e.g., inside `.gemini/skills/`) that bind the `diffless` CLI commands to the Antigravity execution context.
+  - Wire the IDE's Workspace API to automatically react to `diffless switch` directory transitions.
 
 ---
 
@@ -89,7 +96,7 @@ diffless/
 │   └── artifact/         # Generators for Markdown execution plans & diagram compilation
 ├── docs/                 # Diffless conceptual documentation
 ├── assets/               # Demonstration media
-├── go.mod                # Build `diffless tools export` to instantly dump JSON schemas of all available CLI commands so AI systems can auto-configure their function calling loops directly off the binary.
+├── go.mod                # Go module definition
 ├── LICENSE               # GPL-3.0 Open Source License
 └── README.md             
 ```
