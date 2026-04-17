@@ -20,4 +20,8 @@ func init() {
 	rootCmd.AddCommand(startCmd)
 	rootCmd.AddCommand(switchCmd)
 	rootCmd.AddCommand(cleanCmd)
+
+	// Register commands generated for Phase 2
+	rootCmd.AddCommand(lockdownCmd)
+	rootCmd.AddCommand(auditCmd)
 }
