@@ -6,6 +6,10 @@
 
 Welcome to the **Diffless Workflow** repository. This project proposes a paradigm shift in version control and development lifecycles in the era of AI-augmented IDEs (such as Google Antigravity, Claude Code, Cursor, Codex, etc.).
 
+> [!WARNING]  
+> **Early Stages / Experimental**  
+> This project is currently in its very early, formative stages (v0.0.1). While the core architecture for physical sandboxing is implemented, the tool is heavily experimental and subject to rapid iteration. We welcome early community testing, feedback, and contributions!
+
 ## The Concept
 
 For years, we've relied on **Trunk-Based Development (TBD)** as our defense mechanism against human limitations. Merging large branches textually in Git often creates a nightmare scenario called "merge hell," so TBD forced developers to commit thin, daily increments. 
