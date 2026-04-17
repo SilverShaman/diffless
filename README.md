@@ -24,6 +24,7 @@ With these constraints broken, it’s time to move toward an **Agent-Augmented G
 2. **True Physical Sandboxes (via `git worktree`)**: If an AI agent operates in your main repository directory, it will overwrite your files and break your build. Using `git worktree`, AI agents instead check out into completely separate, hidden physical directories while sharing your exact `.git` database.
 3. **Artifact-Driven PRs**: The "Monster PR" is dead. Agents replace raw 5,000-line diffs with rich Artifacts (videos, architectural diagrams, execution plans) that humans can quickly review conceptually.
 4. **Gitflow CLI Abstraction**: Complex workspace management is abstracted into simple CLI commands that act natively as Agent Skills.
+5. **Cross-Platform OS Jailing**: Need mathematical certainty against rogue executions? Use the `--jail` flag to elevate physical isolation into an opt-in, cryptographically bound OS-level sandbox natively across Linux, macOS, and Windows.
 
 ---
 
@@ -111,6 +112,8 @@ Open your repository in Google Antigravity. In the Chat window, ask the agent to
 **2️⃣ Build the Feature**  
 Now that you are physically isolated, ask the agent to implement your logic. The agent is safe to experiment, install unverified dependencies, and overwrite code without touching your main `trunk`:
 > *"Build a beautiful Vue login component. Make sure to include OAuth validation logic and run the test suite."*
+
+> 🛡️ **Advanced Hardening:** For highly untrusted tasks, simply ask the agent to execute its terminal commands using the `--jail` flag. This enforces strict network egress and syscall boundaries at the OS level while it works!
 
 **3️⃣ Sync & Resolve Drift**  
 If the main `trunk` has progressed while the agent was building, invoke the sync loop to resolve drift. Instead of relying on raw text diffs, the agent resolves merge conflicts semantically based on intent:
