@@ -62,6 +62,41 @@ To make this workflow effortless for both developers and AI, we are actively bui
 3. Follow the CLI architectural steps detailed in the [Diffless Workflow Plan](plan.md).
 4. Watch the demo video below to see the transition of standard diffing over to Artifacts.
 
+## Usage Guide
+
+To use the tool natively, build the CLI and walk through a standard AI Agent lifecycle:
+
+```bash
+# Compile and install the CLI
+go build -o diffless cmd/diffless/main.go
+
+# 1. Start a New Feature Sandbox
+# Creates an isolated, hidden physical Git worktree directory.
+./diffless start feature-login
+
+# 2. Lock Down the Sandbox
+# Applies Zero-Trust permission sets (0700) and overrides production .env keys.
+./diffless lockdown feature-login
+
+# 3. Enter the Sandbox
+# Native context switch navigating your shell/IDE into the isolated environment.
+./diffless switch feature-login
+
+# (AI/Developer builds the feature, tests logic, makes commits)
+
+# 4. Semantic Merge & Rebase
+# Resolves textual branch drift using intent-based AI logic rather than raw Git markers.
+./diffless sync feature-login
+
+# 5. Generative Pull Request
+# Orchestrates UI video validation, markdown analysis, and mermaid system mapping.
+./diffless propose feature-login
+
+# 6. Safe Teardown
+# Natively purges the physical directory and cleanly prunes the Git tree references.
+./diffless clean feature-login
+```
+
 ## Demo Video
 
 https://github.com/SilverShaman/diffless/raw/main/assets/demo.mp4
