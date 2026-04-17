@@ -66,7 +66,18 @@ To make this workflow effortless for both developers and AI, we are actively bui
 
 ## Usage Guide
 
-To use the tool natively, build the CLI and walk through a standard AI Agent lifecycle:
+### Google Antigravity Integration (Recommended)
+Because Diffless ships directly with native `.gemini/skills/` proxy bindings, it mounts effortlessly into the Antigravity IDE interface. 
+
+1. Open your repository directly inside Google Antigravity.
+2. In the Chat window, simply type `@diffless start feature-login`. The CLI will auto-compile, spawn the hidden physical worktree, and lock down secure environment boundaries.
+3. Command the IDE agent to build your application features logic. It will safely write code explicitly isolated within the worktree constraints.
+4. When you are ready to review and merge into trunk, execute `@diffless propose feature-login` in chat. The CLI will algorithmically package validation videos and system `.mermaid` topology maps orchestrating a beautiful Pull Request without risking "merge-hell".
+
+---
+
+### Native Terminal Usage
+To use the tool natively via standard shells, build the CLI manually and walk through the identical Agent lifecycle:
 
 ```bash
 # Compile and install the CLI
