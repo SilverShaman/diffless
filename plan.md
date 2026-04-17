@@ -23,13 +23,22 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
   - `diffless audit`: Scans the agent's worktree for unapproved binary executions or anomalous outbound network traffic patterns.
 - **Action for AI Agents:** Agents operate under a Zero-Trust assumption. They must utilize the ephemeral keys provided in the sandbox `.env` and cannot route out to read the parent developer's global `~/.ssh` or `~/.aws` configurations.
 
-## Phase 3: Autonomous Semantic Merging
+## Phase 3: Test Harness for Core Sandboxing (Phases 1 & 2)
+**Goal:** Build an automated execution suite in Go (`go test`) that mathematically proves the physical sandboxing and security constraints function safely against a real `.git` database.
+- **Testing Implementation:**
+  - The test framework will dynamically generate a temporary local Git repository (`git init /tmp/diffless-test-repo`).
+  - It will programmatically run `diffless start mock-task`, verifying the `git worktree` spawns securely outside the main repo file-tree.
+  - It will execute `diffless lockdown mock-task` and algorithmically assert that path permissions restrict to `0700` and the ephemeral `.env` generates cleanly without parent credential leaking.
+  - Finally, it will invoke `diffless clean mock-task` to ensure the physical directory and `.git` worktree graph prune gracefully with zero residual pollution.
+- **Action for CI/CD:** Ensures that future Diffless CLI builds cannot regress the isolation boundary, allowing AI agents to experiment freely.
+
+## Phase 4: Autonomous Semantic Merging
 **Goal:** Abstract away branch drift and complex merges inside the CLI.
 - **Command Implementation:**
   - `diffless sync`: The CLI checks if the current worktree has drifted from `main`. If significant textual conflicts exist, the CLI pipes the conflicting patches to the AI.
 - **Action for AI Agents:** The agent uses its semantic understanding to rewrite conflicting blocks based on intentionality, automatically resolving merges inside its isolated worktree.
 
-## Phase 4: Artifact-Driven Reviews
+## Phase 5: Artifact-Driven Reviews
 **Goal:** Automatically compile rich PRs avoiding raw code-diff fatigue.
 - **Command Implementation:**
   - `diffless propose`: Rather than a standard `git push`, the CLI orchestrates the AI to generate an **Artifact Package**.
@@ -39,7 +48,7 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
   3. Evidence of success (e.g., triggering a headless browser recording to output an `.mp4`).
   The CLI bundles these files into the PR description.
 
-## Phase 5: Natural Language Execution (Agent Skills)
+## Phase 6: Natural Language Execution (Agent Skills)
 **Goal:** Make the CLI usable as native "tools" for LLMs.
 - **Action for Developers:** Use intuitive language for complex repo operations (e.g., *"Antigravity, diffless start a new feature for the login portal, build the UI, and diffless propose it when you are done."*)
 - **Implementation Considerations:**
@@ -83,5 +92,5 @@ diffless/
 ---
 
 ## Next Steps
-- Begin implementation of Phase 3: Autonomous Semantic Merging (`diffless sync`).
-- Hook up an LLM API client in Go to synthetically rewrite conflicting patches.
+- Begin implementation of Phase 3 (`go test` harness for Sandboxing and Security logic).
+- Construct temporary repository spawning architecture to avoid mutating the main workspace during testing.
