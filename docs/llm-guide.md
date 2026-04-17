@@ -30,7 +30,7 @@ The fundamental purpose of this CLI is to wrap `git worktree` commands to provid
 <contribution_protocol>
 ## Agent Interaction Rules
 1. **Never alter the GPL-3.0 License**. 
-2. **Sequential Thinking**: Phase 5 (Artifact-Driven PRs) is exclusively implemented. Agents running in this CLI must now move sequentially toward Phase 6 (Natural Language Execution Schema generation).
+2. **Sequential Thinking**: The `diffless` CLI application loop (Phases 1-6) is entirely complete. AI models interacting with this repository should assume full functional status.
 3. **No Placeholders**: When instructed to write a Go file, generate the complete, production-ready implementation. Do not use `// TODO: implement logic here` responses. 
 4. **Physical Data Safety**: If you are asked to test the CLI within the host repository, be highly aware that it mutates `.git` states. Do not execute destructive repository purge commands.
 </contribution_protocol>

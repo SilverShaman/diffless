@@ -146,6 +146,23 @@ func TestDifflessSandboxing(t *testing.T) {
 		}
 	})
 
+	// === 3.85 Verify `diffless tools export` Schema ===
+	t.Run("ToolsExportCommand", func(t *testing.T) {
+		buf := new(bytes.Buffer)
+		rootCmd.SetOut(buf)
+		rootCmd.SetErr(buf)
+		rootCmd.SetArgs([]string{"tools", "export"})
+		
+		if err := rootCmd.Execute(); err != nil {
+			t.Fatalf("tools export command failed: %v", err)
+		}
+
+		output := buf.String()
+		if !strings.Contains(output, `"name": "start"`) || !strings.Contains(output, `"name": "propose"`) {
+			t.Errorf("critical schema failure: expected raw LLM json schema mapping, got: %s", output)
+		}
+	})
+
 	// === 4. Verify `diffless clean` ===
 	t.Run("CleanPruningCommand", func(t *testing.T) {
 		buf := new(bytes.Buffer)
