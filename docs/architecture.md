@@ -34,4 +34,8 @@ While physical `git worktree` isolation prevents repository drift, Diffless also
   - **Linux:** Kernel Namespaces (`CLONE_NEWNS`, `CLONE_NEWNET`) and eBPF syscall filtering.
   - **Windows:** Host Compute System (HCS), AppContainer capability profiles, and Windows Filtering Platform (WFP).
   - **macOS:** App Sandbox (`sandbox-exec` profiles) and Endpoint Security (ES).
+  - **NixOS:** Declarative application sandboxing using `bubblewrap` and system-level isolation via `systemd-nspawn`, leveraging the reproducible Nix ecosystem.
+- **Containerized Isolation Backends:** Beyond native OS primitives, the `JailProvider` also supports standard container ecosystems:
+  - **Docker (OCI-Based):** Standard, portable container jailing via the Docker engine for environments heavily reliant on containerized dev flows.
+  - **Bubblewrap (Super Lightweight):** Extremely fast, unprivileged, daemon-less process sandboxing that boots instantly without the overhead of full OCI containers.
 - **Opt-In Execution:** Because full OS-level isolation can complicate basic local development workflows, it is strictly opt-in (`--jail`). If omitted, executions safely fall back to the standard Phase 2 user-space boundary (0700 file permissions and `.env` stripping).

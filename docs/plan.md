@@ -35,6 +35,14 @@ To see the full architectural progression of the Diffless CLI, review the comple
 
 ---
 
+## Phase 12: Expanded Sandboxing Ecosystems [PLANNED]
+**Goal:** Broaden the `diffless run --jail` capabilities beyond native kernel primitives to support diverse container and reproducible environments.
+- **NixOS Integration:** Implement native `systemd-nspawn` and `bubblewrap` (`bwrap`) providers to allow developers to leverage strict, declarative Nix sandbox configurations.
+- **Docker-Based Isolation:** Add an OCI-compliant provider targeting the Docker Engine. This allows teams already using DevContainers or Dockerized workflows to jail AI agents inside standard, heavy-duty Docker containers.
+- **Lightweight Containerization (Bubblewrap):** Provide a daemon-less, super lightweight isolation backend using `bwrap` for Linux users who want microsecond startup times, unprivileged execution, and extremely low resource overhead compared to a full Docker daemon.
+
+---
+
 ## Antigravity IDE Optimizations
 Because the primary target environment for the Diffless CLI is **Google Antigravity**, we will intentionally optimize the CLI hooks for its native architectural features:
 
