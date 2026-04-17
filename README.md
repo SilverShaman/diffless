@@ -21,14 +21,18 @@ With these constraints broken, it’s time to move toward an **Agent-Augmented G
 
 ---
 
-## The Diffless CLI
+## The Diffless CLI (Current Progress)
 
-To make this workflow effortless for both developers and AI, we envision the lightweight **Diffless CLI** wrapping native `git worktree` commands:
+To make this workflow effortless for both developers and AI, we are actively building the lightweight **Diffless CLI** in Go to wrap native `git worktree` commands:
 
-- `diffless start <feature>`: Creates a physically isolated AI sandbox (e.g., `../.diffless-workspaces/feature`).
-- `diffless sync`: Synthetically and semantically rebases agent code against the main trunk.
-- `diffless propose`: Orchestrates the AI to generate markdown plans, architecture diagrams, and testing videos for a pull request.
-- `diffless clean`: Prunes the external worktree safely once merged.
+- [x] **Phase 1: Sandboxing** 
+  - `diffless start <feature>`: Creates a physically isolated AI sandbox.
+  - `diffless switch <feature>`: Transitions context to the isolated path.
+  - `diffless clean`: Prunes the external worktree safely once merged.
+- [ ] **Phase 2: Semantic Merging**
+  - `diffless sync`: Synthetically and semantically rebases agent code against the main trunk.
+- [ ] **Phase 3: Artifact-Driven PRs**
+  - `diffless propose`: Orchestrates the AI to generate markdown plans, architecture diagrams, and testing videos for a pull request.
 
 ## Repository Structure
 

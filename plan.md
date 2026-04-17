@@ -8,7 +8,7 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
 
 ---
 
-## Phase 1: The Diffless CLI & Worktree Sandboxing
+## Phase 1: The Diffless CLI & Worktree Sandboxing [COMPLETED]
 **Goal:** Build a lightweight CLI that manages physical isolation via `git worktree`.
 - **Command Implementation:**
   - `diffless start <task-id>`: Automatically runs `git worktree add -b <task-id> ../.diffless-workspaces/<task-id>`. This creates a physically isolated directory sharing the main `.git` database.
@@ -76,6 +76,6 @@ diffless/
 ---
 
 ## Next Steps
-- Implement the basic CLI scaffold in Go using a framework like Cobra.
-- Register the `diffless` CLI commands as custom integrations in standard AI IDEs.
-- Deploy the CLI locally to test physical isolation between human context and agent context.
+- Begin implementation of Phase 2: Autonomous Semantic Merging (`diffless sync`).
+- Hook up an LLM API client in Go to process textual merge conflicts synthetically.
+- Register the newly built `diffless` CLI Sandbox commands as custom integrations in standard AI IDEs.

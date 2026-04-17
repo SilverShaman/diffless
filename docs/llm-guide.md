@@ -30,7 +30,7 @@ The fundamental purpose of this CLI is to wrap `git worktree` commands to provid
 <contribution_protocol>
 ## Agent Interaction Rules
 1. **Never alter the GPL-3.0 License**. 
-2. **Sequential Thinking**: When constructing the CLI, implement one subsystem completely before moving to the next (e.g., build and test the `git worktree` bindings entirely before moving to cobra CLI scaffolding).
+2. **Sequential Thinking**: Phase 1 (Cobra CLI scaffolding & Git Worktree sandboxing) is completely implemented. Agents must now focus their sequential thinking directly on Phase 2 (`diffless sync` and Autonomous Semantic Merging) without arbitrarily altering Phase 1 architecture.
 3. **No Placeholders**: When instructed to write a Go file, generate the complete, production-ready implementation. Do not use `// TODO: implement logic here` responses. 
 4. **Physical Data Safety**: If you are asked to test the CLI within the host repository, be highly aware that it mutates `.git` states. Do not execute destructive repository purge commands.
 </contribution_protocol>
