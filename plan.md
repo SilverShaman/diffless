@@ -40,6 +40,16 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
 
 ---
 
+## Antigravity IDE Optimizations
+Because the primary target environment for the Diffless CLI is **Google Antigravity**, we will intentionally optimize the CLI hooks for its native architectural features:
+
+- **Workspaces & Sandbox Mode**: When `diffless start` generates a `git worktree`, the CLI should use the Antigravity API to bind the agent purely to the new physical path. Engaging **Sandbox Mode** ensures the agent is hermetically sealed and cannot execute commands or read state from the human developer's parent `trunk` directory.
+- **Browser Subagent Artifacts**: During `diffless propose`, the CLI should programmatically trigger Antigravity’s native `browser_subagent` tool. It will spin up the feature's dev server, navigate the frontend, and record the UI interactions, seamlessly injecting the `.mp4` or `.webp` artifacts into the PR.
+- **Rules, Workflows & Task Groups**: Rather than using pure bash automation, the CLI will package standard operations into Antigravity **Task Groups** and **Workflows**. A dedicated ruleset (`.antigravity/diffless-workflow.yaml`) can safely orchestrate Phase 3: *Task 1: Semantic Merge*, *Task 2: Subagent Recording*, *Task 3: Diagram Generation*.
+- **Strict Mode Commands**: By registering standard operations (`start`, `sync`, `propose`, `clean`) as native `/commands` inside the IDE, and engaging **Strict Mode**, we guarantee the AI doesn't hallucinate raw Git operations, strictly routing its actions through the safe Diffless APIs.
+
+---
+
 ## Next Steps
 - Create the initial `diffless` bash or Node.js CLI prototype wrapping the `git worktree` commands.
 - Register the `diffless` CLI commands as custom integrations in standard AI IDEs.
