@@ -42,6 +42,9 @@ As an Antigravity Agent, strictly adhere to these developmental practices:
 
 <reference_documentation>
 ## External Context Links
+
+> **NOTE:** The content for all of the links below has been downloaded and aggregated locally into simple markdown format. You **do not** need to fetch these from the web going forward. Please reference `docs/references/reference.md` instead.
+
 For deeper architectural alignment, query or reference the underlying system documentation directly:
 
 **Git Native:**
