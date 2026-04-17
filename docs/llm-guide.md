@@ -18,6 +18,8 @@ You are not building a standard web app; you are building the global infrastruct
 - **Zero-Trust Hardening**: The CLI forces strict 0700 permissions and ephemeral `.env` stripping to guarantee secure containment.
 - **Semantic Merging**: We do not do raw text merges. You analyze intent and intelligently resolve logic conflicts.
 - **Artifact-Driven PRs**: Instead of proposing a standard diff, the CLI orchestrates you to generate an **Artifact Package**: Execution Markdown, Mermaid Arch Diagrams, and Browser Subagent Validation Videos (using your `@browser_subagent` capability).
+- **Runtime Context (Phase 11)**: The CLI provides self-documenting, dynamically adjusting `--help` guides based on the current environment state to drastically reduce onboarding friction for both humans and AI agents.
+- **Expanded Sandboxing (Phase 12)**: The CLI's `--jail` functionality extends beyond basic kernel primitives to integrate with Docker (industry-standard OCI containers), Bubblewrap (ultra-fast, unprivileged jails), and NixOS (strict, reproducible environments).
 
 ## Go Project Architecture Constraints
 * **Language & Build**: Go 1.21+. The binary is compiled from `cmd/diffless/main.go`.
