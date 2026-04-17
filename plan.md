@@ -1,49 +1,46 @@
 # Diffless Workflow Implementation Plan
 
 ## Overview
-This document outlines the transition plan from Trunk-Based Development (TBD) to the **Diffless Workflow** (AI-Augmented Feature Branching & Gitflow). The goal is to optimize our repository environments for long-running, autonomous AI agents (like Google Antigravity, Claude Code, and Codex) while maintaining high visibility and control for human reviewers.
+This document outlines the transition plan to the **Diffless Workflow** via the creation of a lightweight **Diffless CLI**. The goal is to optimize environments for autonomous AI agents using `git worktree` for physical isolation, while leveraging semantic merging and artifact-driven reviews.
 
-## Why This Plan?
-As outlined in our initial concepts (see `docs/concept.md`), traditional Git workflows struggle with long-lived branches because merges are strictly *textual*. This leads to "merge hell," which forced the industry to adopt TBD as a defense mechanism to limit cognitive bandwidth exhaustion. 
-
-The **Diffless Workflow** leverages the *semantic merging* capabilities of modern AI. AI can understand the architectural intent of code changes and resolve conflicts seamlessly—enabling agents to work for weeks in isolated, deep sandboxes without generating catastrophic merge conflicts.
+## Why a CLI?
+To make this workflow effortless for both human developers and AI IDEs (like Google Antigravity or Claude Code), we will build the `diffless` CLI. Under the hood, the CLI heavily leverages `git worktree` to grant AI agents isolated, physical directories that share the same Git database footprint. This prevents AI agents from corrupting the human developer's active workspace state.
 
 ---
 
-## Phase 1: Isolated Agent Sandboxing
-**Goal:** Prevent agent-driven changes from disrupting the main build.
-- **Action for Developers:** Avoid committing complex work directly to `main` if it can be offloaded.
-- **Action for AI Agents:** When an agent receives a task, it must **fork** the repository or create an isolated, long-lived **feature branch**.
-- **Implementation Considerations:**
-  - Define branch naming conventions, e.g., `agent/<agent-id>-<feature-name>`.
-  - Configure CI/CD pipelines to isolate agent branches, giving the AI a true sandbox to safely experiment and iterate.
+## Phase 1: The Diffless CLI & Worktree Sandboxing
+**Goal:** Build a lightweight CLI that manages physical isolation via `git worktree`.
+- **Command Implementation:**
+  - `diffless start <task-id>`: Automatically runs `git worktree add -b <task-id> ../.diffless-workspaces/<task-id>`. This creates a physically isolated directory sharing the main `.git` database.
+  - `diffless switch <task-id>`: Navigates the terminal or AI environment to the isolated worktree.
+  - `diffless clean`: Prunes and removes completed worktrees using `git worktree remove` and `git worktree prune`.
+- **Action for AI Agents:** Agents execute `diffless start` to safely experiment, install conflicting dependencies, or crash the local server in their own physical directory without impacting the developer's trunk.
 
 ## Phase 2: Autonomous Semantic Merging
-**Goal:** Eradicate textual merge conflicts.
-- **Action for Developers:** Rely on AI IDEs to handle branch drift.
-- **Action for AI Agents:** The agent must safely handle conflicts. If a long-lived agent branch drifts from `main`, the AI should periodically review the upstream changes, understand their intent, and synthetically re-implement them or resolve conflicts inside its sandbox autonomously.
-- **Implementation Considerations:**
-  - Introduce regular, automated rebasing triggers for active agent sandboxes.
+**Goal:** Abstract away branch drift and complex merges inside the CLI.
+- **Command Implementation:**
+  - `diffless sync`: The CLI checks if the current worktree has drifted from `main`. If significant textual conflicts exist, the CLI pipes the conflicting patches to the AI.
+- **Action for AI Agents:** The agent uses its semantic understanding to rewrite conflicting blocks based on intentionality, automatically resolving merges inside its isolated worktree.
 
-## Phase 3: Artifact-Driven Reviews (Solving the "Monster PR")
-**Goal:** Replace line-by-line review fatigue with conceptual "Diffless" artifact checks.
-- **Action for Developers:** Stop reviewing raw 5,000-line code diffs. Review the rich artifacts instead, providing high-level feedback in natural language.
-- **Action for AI Agents:** Before merging into `main`, agents must generate an **Artifact Package**.
-- **Implementation Considerations:**
-  - Agents must generate a `markdown` execution plan detailing what was achieved.
-  - Agents must build `mermaid` architecture diagrams to map out large changes.
-  - Agents must attach functionality validation in the PRs (e.g., MP4s of an agent navigating the UI to prove it works).
+## Phase 3: Artifact-Driven Reviews
+**Goal:** Automatically compile rich PRs avoiding raw code-diff fatigue.
+- **Command Implementation:**
+  - `diffless propose`: Rather than a standard `git push`, the CLI orchestrates the AI to generate an **Artifact Package**.
+- **Action for AI Agents:** When triggered, the AI must inspect its worktree changes and generate:
+  1. A `markdown` execution plan detailing what was achieved.
+  2. A `mermaid` architecture diagram highlighting system changes.
+  3. Evidence of success (e.g., triggering a headless browser recording to output an `.mp4`).
+  The CLI bundles these files into the PR description.
 
-## Phase 4: Formal Gitflow via Agent "Skills"
-**Goal:** Eliminate Gitflow overhead via conversational prompts.
-- **Action for Developers:** Use intuitive language for complex repo operations (e.g., *"Cut a release branch, run integration tests, and generate a changelog artifact if tests pass"*).
-- **Action for AI Agents:** Safely execute complex chains of Git operations (hotfixes, squashing, merging, cherry-picking) with precision.
+## Phase 4: Natural Language Execution (Agent Skills)
+**Goal:** Make the CLI usable as native "tools" for LLMs.
+- **Action for Developers:** Use intuitive language for complex repo operations (e.g., *"Antigravity, diffless start a new feature for the login portal, build the UI, and diffless propose it when you are done."*)
 - **Implementation Considerations:**
-  - Ensure operations like `cherry-pick` and `rebase` are formalized as executable Agent "Skills."
+  - Provide a machine-readable JSON schema for the `diffless` CLI so that AI agents can natively invoke `start`, `sync`, `propose`, and `clean` with zero hallucination.
 
 ---
 
 ## Next Steps
-- Verify the local configuration of Antigravity or other AI IDE setups for semantic merges.
-- Create an automated PR/Merge-Request template that forces the generation of execution plans and execution recordings in place of standard diffs.
-- Distribute the Diffless infographic (`assets/infographic.webp`) to the engineering team.
+- Create the initial `diffless` bash or Node.js CLI prototype wrapping the `git worktree` commands.
+- Register the `diffless` CLI commands as custom integrations in standard AI IDEs.
+- Deploy the CLI locally to test physical isolation between human context and agent context.
