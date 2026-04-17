@@ -30,7 +30,7 @@ The fundamental purpose of this CLI is to wrap `git worktree` commands to provid
 <contribution_protocol>
 ## Agent Interaction Rules
 1. **Never alter the GPL-3.0 License**. 
-2. **Sequential Thinking**: The `diffless` CLI application loop (Phases 1-6) is entirely complete. AI models interacting with this repository should assume full functional status.
+2. **Sequential Thinking**: The `diffless` CLI application loop (Phases 1-8) is entirely complete. AI models interacting with this repository should assume full functional status, including global package deployment and system-wide IDE interceptors.
 3. **No Placeholders**: When instructed to write a Go file, generate the complete, production-ready implementation. Do not use `// TODO: implement logic here` responses. 
 4. **Physical Data Safety**: If you are asked to test the CLI within the host repository, be highly aware that it mutates `.git` states. Do not execute destructive repository purge commands.
 </contribution_protocol>
@@ -40,6 +40,7 @@ The fundamental purpose of this CLI is to wrap `git worktree` commands to provid
 If you are Google Antigravity (or another advanced IDE agent) reading this context file:
 - **Sandbox Mode Awareness**: Understand that the CLI you are helping to build is mathematically designed to trigger your native "Sandbox Mode" when `diffless start` runs. We are building the host infrastructure for *you*.
 - **Browser Subagent**: Be prepared to embed code that securely triggers your `@browser_subagent` for UI validation testing during the `diffless propose` pipeline. 
+- **Global Skill Interception**: The native tool execution payload is centrally deployed to `~/.gemini/skills/diffless.sh` globally to function across any workspace.
 - **Precision Edits**: When the human USER asks you to edit existing `.go` files across this repository, strictly adhere to your internal specific string-replacement tools (e.g., `multi_replace_file_content`) to prevent exhausting your context window on raw rewrites. 
 </antigravity_specific_hooks>
 
