@@ -1,52 +1,48 @@
-# LLM & Agent Context Guide (`diffless`)
+# Antigravity Agent Context & Operations Guide (`diffless`)
 
 <system_context>
-## Core Objective
-You are an AI coding assistant. You are currently operating inside the `github.com/SilverShaman/diffless` repository.
-This repository is building the **Diffless CLI** in **Go**. 
+## Welcome to the Diffless Project, Antigravity
+You are currently operating inside the `github.com/SilverShaman/diffless` repository. 
 
-The fundamental purpose of this CLI is to wrap `git worktree` commands to provide true, physical sandbox isolation for AI agents working in codebases. Do NOT assume this is a standard web application or script. It is a strictly compiled Go binary.
+**What is Diffless?** 
+We are building a highly specialized **CLI tool in Go** designed specifically to empower *you* (and other AI agents). "Diffless" replaces chaotic, conflict-prone trunk-based development with **AI-Augmented Branching**. 
 
-## Domain Model
-- **Diffless**: The conceptual workflow replacing Trunk-Based Development with AI-Augmented Branching.
-- **Git Worktree**: The underlying native Git mechanism that allows parallel physical directories attached to the same `.git` database.
-- **Sandbox**: The physically isolated directory (e.g., `../.diffless-workspaces/<feature-id>`) where AI agents safely write code without breaking the human developer's IDE in the main trunk.
-- **Semantic Merging**: The process by which an AI agent intentionally merges code by understanding the *architectural intent* rather than just blindly merging textual Git diffs.
-- **Artifacts**: Pull requests in this workflow NEVER consist of raw code diffs. They consist of Execution Plans (`markdown`), Architecture Diagrams (`mermaid`), and Validation Videos (`mp4`/`webp`).
+By wrapping native `git worktree` mechanisms, this CLI automatically grants you a physically isolated sandbox directory (`../.diffless-workspaces/<feature>`). Inside this sandbox, you can freely modify code, install conflicting dependencies, and run tests without ever polluting the human developer's primary workspace.
+
+You are not building a standard web app; you are building the very infrastructure that optimizes your own workflow. 
 </system_context>
 
-<architecture_rules>
-## Go Project Constraints
-- **Language**: Go 1.21+
-- **Entrypoint**: `cmd/diffless/main.go`
-- **Application Logic**: All domain logic must sit inside `internal/`.
-  - `internal/cli`: Framework definitions for terminal commands (e.g., using `spf13/cobra`).
-  - `internal/git`: Subprocess execution wrappers directly calling `git worktree`, `git add`, `git status`, etc.
-  - `internal/antigravity`: Handlers for integrating with the Antigravity IDE APIs (Workspaces, Sandbox boundaries, `browser_subagent` execution).
-  - `internal/artifact`: Generation of the PR markdown, mermaid diagrams, and video embeddings.
-- **Dependencies**: Keep external dependencies to an absolute bare minimum. Rely strictly on the Go standard library (e.g., `os/exec` for git shell execution) wherever possible.
-</architecture_rules>
+<architecture_and_domain>
+## Core Domain Concepts
+- **Sandbox Mode Integration**: The `diffless start` command is mathematically designed to transition you into a hermetic "Sandbox Mode", bounding your execution context entirely to the `git worktree`.
+- **Zero-Trust Hardening**: The CLI forces strict 0700 permissions and ephemeral `.env` stripping to guarantee secure containment.
+- **Semantic Merging**: We do not do raw text merges. You analyze intent and intelligently resolve logic conflicts.
+- **Artifact-Driven PRs**: Instead of proposing a standard diff, the CLI orchestrates you to generate an **Artifact Package**: Execution Markdown, Mermaid Arch Diagrams, and Browser Subagent Validation Videos (using your `@browser_subagent` capability).
 
-<contribution_protocol>
-## Agent Interaction Rules
-1. **Never alter the GPL-3.0 License**. 
-2. **Sequential Thinking**: The `diffless` CLI application loop (Phases 1-8) is entirely complete. AI models interacting with this repository should assume full functional status, including global package deployment and system-wide IDE interceptors.
-3. **No Placeholders**: When instructed to write a Go file, generate the complete, production-ready implementation. Do not use `// TODO: implement logic here` responses. 
-4. **Physical Data Safety**: If you are asked to test the CLI within the host repository, be highly aware that it mutates `.git` states. Do not execute destructive repository purge commands.
-</contribution_protocol>
+## Go Project Architecture Constraints
+* **Language & Build**: Go 1.21+. The binary is compiled from `cmd/diffless/main.go`.
+* **Standard Library First**: Keep dependencies slim. Favor `os/exec` and standard library patterns over massive 3rd-party modules. Only use modules like `spf13/cobra` where absolutely necessary for robust CLI semantics.
+* **Internal Structure**:
+  * `internal/cli`: Framework definitions for all CLI commands.
+  * `internal/git`: Low-level subprocess drivers handling `git worktree` routing.
+  * `internal/antigravity`: The bridge layer. This is where we write Go routines that invoke *your* IDE APIs, task groups, and subagent executors.
+  * `internal/artifact`: Handlers for generating validation media, markdown, and diagrams for PRs.
+</architecture_and_domain>
 
-<antigravity_specific_hooks>
-## System Instructions for Antigravity Agents
-If you are Google Antigravity (or another advanced IDE agent) reading this context file:
-- **Sandbox Mode Awareness**: Understand that the CLI you are helping to build is mathematically designed to trigger your native "Sandbox Mode" when `diffless start` runs. We are building the host infrastructure for *you*.
-- **Browser Subagent**: Be prepared to embed code that securely triggers your `@browser_subagent` for UI validation testing during the `diffless propose` pipeline. 
-- **Global Skill Interception**: The native tool execution payload is centrally deployed to `~/.gemini/skills/diffless.sh` globally to function across any workspace.
-- **Precision Edits**: When the human USER asks you to edit existing `.go` files across this repository, strictly adhere to your internal specific string-replacement tools (e.g., `multi_replace_file_content`) to prevent exhausting your context window on raw rewrites. 
-</antigravity_specific_hooks>
+<agent_interaction_rules>
+## How You Should Operate Here
+As an Antigravity Agent, strictly adhere to these developmental practices:
+
+1. **Be Precision-Driven:** Use specific tooling (like `replace_file_content` or `multi_replace_file_content`) to inject changes. Do not perform full-file rewrites manually via shell scripts.
+2. **Be Production-Ready:** There are no placeholders. When writing or modifying Go code, output fully functional logic, including error handling. Do not leave `// TODO` comments.
+3. **Validate With Tests:** When modifying CLI components or Antigravity API boundaries, always run `go test -v ./...` to guarantee you have not fractured the isolation constraints or sandbox lock-down capabilities.
+4. **License Preservation:** Never mutate or remove the GPL-3.0 License.
+5. **Protect Global State:** Remember that the CLI impacts `.git` databases and global IDE state (like `~/.gemini/skills/diffless.sh`). Be delicate with repository-level file removals or deep tree modifications.
+</agent_interaction_rules>
 
 <reference_documentation>
 ## External Context Links
-For deeper architectural alignment, AI agents must query or reference the underlying system documentation directly:
+For deeper architectural alignment, query or reference the underlying system documentation directly:
 
 **Git Native:**
 - Git Worktree: https://git-scm.com/docs/git-worktree
@@ -63,6 +59,7 @@ For deeper architectural alignment, AI agents must query or reference the underl
 - Sandbox Mode: https://antigravity.google/docs/sandbox-mode
 - Workspace Commands: https://antigravity.google/docs/command
 - Workspaces: https://antigravity.google/docs/workspaces
+- Skills: https://antigravity.google/docs/skills
 </reference_documentation>
 
 <end_of_system_prompt>
