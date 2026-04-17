@@ -50,7 +50,32 @@ Because the primary target environment for the Diffless CLI is **Google Antigrav
 
 ---
 
+## Technical Architecture (Go)
+To ensure the `diffless` CLI is lightweight, high-performance, and easily distributable across operating systems as a single compiled binary, the primary programming language will be **Go (Golang)**. 
+
+### Proposed Project Structure
+Following idiomatic Go project layouts, the repository acts as the host for the CLI source code:
+
+```text
+diffless/
+├── cmd/
+│   └── diffless/
+│       └── main.go       # Entry point for the compiled CLI binary
+├── internal/             # Encapsulated application logic
+│   ├── cli/              # Command parsing (e.g., using spf13/cobra)
+│   ├── git/              # Subprocess wrappers executing `git worktree`
+│   ├── antigravity/      # API integrations for Antigravity Workspaces & Subagents
+│   └── artifact/         # Generators for Markdown execution plans & diagram compilation
+├── docs/                 # Diffless conceptual documentation
+├── assets/               # Demonstration media
+├── go.mod                # Go module definition
+├── LICENSE               # GPL-3.0 Open Source License
+└── README.md             
+```
+
+---
+
 ## Next Steps
-- Create the initial `diffless` bash or Node.js CLI prototype wrapping the `git worktree` commands.
+- Implement the basic CLI scaffold in Go using a framework like Cobra.
 - Register the `diffless` CLI commands as custom integrations in standard AI IDEs.
 - Deploy the CLI locally to test physical isolation between human context and agent context.

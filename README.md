@@ -32,15 +32,16 @@ To make this workflow effortless for both developers and AI, we envision the lig
 
 ## Repository Structure
 
+- **`cmd/diffless/`**  
+  The main entry point for the compiled Go-based `diffless` CLI.
+- **`internal/`**  
+  The core Go logic housing `git` worktree wrappers, `antigravity` API integrations, and `cli` command routing.
 - **`plan.md`**  
   The step-by-step implementation plan for building the `diffless` CLI and enabling true physical agent sandboxing.
-  
 - **`docs/concept.md`**  
   The foundational theory detailing why TBD evolved for humans, and why `git worktree` sandboxes are necessary for AI.
-
 - **`docs/Diffless.pdf`**  
   Detailed documentation showcasing the Diffless approach.
-
 - **`assets`**  
   Contains visual assets like the infographic and the demo MP4 showcasing the workflow in action.
 
