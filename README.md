@@ -39,6 +39,8 @@ To make this workflow effortless for both developers and AI, we are actively bui
   - `diffless propose`: Orchestrates the AI to securely map out markdown execution plans, architecture system diagrams, and testing validation videos representing successful build constraints natively inside the generated test logs.
 - [x] **Phase 6: Natural Language Execution**
   - Maps the CLI bounds into functional execution schemas natively accessible by autonomous AI reasoning models.
+- [x] **Phase 7: Antigravity Skill Bindings**
+  - Wraps the exported Phase 6 runtime natively into a local `.gemini/skills/diffless.sh` execution module exposing raw `@diffless` IDE chat commands.
 
 ## Repository Structure
 
