@@ -78,7 +78,7 @@ The official global deployment standard is built natively for Linux Mint. You ca
 cd packaging/mint
 ./install.sh
 ```
-This script will safely bind the CLI globally over `$PATH` and register the Antigravity IDE interceptor precisely to `~/.gemini/antigravity/skills/diffless.sh`.
+This script will safely bind the CLI globally over `$PATH` and register the Antigravity IDE skill precisely to `~/.gemini/antigravity/skills/diffless/`.
 
 ### Generic Global Installation (Fallback Phase)
 For non-Mint systems, use the standard fallback bootstrap directly in the repository root:
@@ -88,13 +88,31 @@ For non-Mint systems, use the standard fallback bootstrap directly in the reposi
 
 ## Usage Guide
 
-### Google Antigravity Integration (Recommended)
-Because Diffless ships directly with native `.gemini/skills/` proxy bindings, it mounts effortlessly into the Antigravity IDE interface. 
+### 🚀 Google Antigravity Integration (Recommended)
 
-1. Open your repository directly inside Google Antigravity.
-2. In the Chat window, simply type `@diffless start feature-login`. The CLI will auto-compile, spawn the hidden physical worktree, and lock down secure environment boundaries.
-3. Command the IDE agent to build your application features logic. It will safely write code explicitly isolated within the worktree constraints.
-4. When you are ready to review and merge into trunk, execute `@diffless propose feature-login` in chat. The CLI will algorithmically package validation videos and system `.mermaid` topology maps orchestrating a beautiful Pull Request without risking "merge-hell".
+Because Diffless ships directly with a standard Antigravity Skill package, it mounts effortlessly into the Antigravity IDE interface. You don't need to configure complex scripts—just talk to the agent naturally!
+
+Here is an end-to-end workflow for building a new feature securely:
+
+**1️⃣ Initialize the Sandbox**  
+Open your repository in Google Antigravity. In the Chat window, ask the agent to start the feature:
+> *"Use the diffless skill to start a new sandbox for `feature-login`."*
+> 
+> 🛠️ **What happens:** The IDE automatically discovers the global skill, auto-compiles the CLI, spawns a hidden physical `git worktree`, and locks down the environment boundaries with a secure `.env`.
+
+**2️⃣ Build the Feature**  
+Now that you are physically isolated, ask the agent to implement your logic. The agent is safe to experiment, install unverified dependencies, and overwrite code without touching your main `trunk`:
+> *"Build a beautiful Vue login component. Make sure to include OAuth validation logic and run the test suite."*
+
+**3️⃣ Sync & Resolve Drift**  
+If the main `trunk` has progressed while the agent was building, invoke the sync loop to resolve drift. Instead of relying on raw text diffs, the agent resolves merge conflicts semantically based on intent:
+> *"Diffless sync the current sandbox. Review any upstream changes from trunk and merge them logically into my login codebase."*
+
+**4️⃣ Propose Changes for Review**  
+When the code is ready, ask the agent to finalize the feature and generate a comprehensive proposal for your team to review (traditionally known as a Pull Request or Merge Request):
+> *"Propose the `feature-login` via diffless."*
+> 
+> 🎬 **What happens:** Diffless orchestrates the IDE to package UI validation videos (via the Antigravity browser subagent), mermaid system architecture diagrams, and plain-English markdown execution plans into a cohesive review package. Instead of forcing your team to read thousands of lines of raw code changes, they can instantly understand the feature conceptually. No more raw "merge-hell"!
 
 ---
 

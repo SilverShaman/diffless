@@ -30,14 +30,38 @@ fi
 
 # 2. Deploy the Antigravity Skill
 echo "=> Installing global Antigravity Skill..."
-SKILLS_DIR="$HOME/.gemini/antigravity/skills"
-mkdir -p "$SKILLS_DIR"
-cat << 'EOF' > "$SKILLS_DIR/diffless.sh"
+SKILLS_DIR="$HOME/.gemini/antigravity/skills/diffless"
+mkdir -p "$SKILLS_DIR/scripts"
+
+cat << 'EOF' > "$SKILLS_DIR/SKILL.md"
+---
+name: diffless
+description: The native AI agent interface for the Diffless physical worktree CLI. Rapidly spin up sandboxes, run sync loops, and propose logic directly inside IDE execution bounds.
+---
+
+# Diffless Skill
+
+This skill provides the native AI agent interface for the Diffless physical worktree CLI.
+
+## When to use this skill
+
+- When the user asks to start a new feature using diffless (`diffless start`).
+- When the user asks to sync or propose changes using diffless (`diffless sync`, `diffless propose`).
+- To work in an isolated physical Git worktree instead of the main trunk.
+
+## How to use it
+
+You can execute the `diffless` CLI directly if it is in your PATH, or use the wrapper script provided in `scripts/diffless.sh`.
+
+Examples:
+- `diffless start <feature-name>`
+- `diffless switch <feature-name>`
+- `diffless propose`
+- `diffless clean`
+EOF
+
+cat << 'EOF' > "$SKILLS_DIR/scripts/diffless.sh"
 #!/usr/bin/env bash
-# <antigravity_skill>
-# name: diffless
-# description: The native AI agent interface for the Diffless physical worktree CLI. Rapidly spin up sandboxes, run sync loops, and propose logic directly inside IDE execution bounds.
-# </antigravity_skill>
 
 set -e
 
@@ -53,8 +77,8 @@ echo "[Antigravity-Skill] 🚀 Routing IDE intent -> diffless $@"
 diffless "$@"
 EOF
 
-chmod +x "$SKILLS_DIR/diffless.sh"
-echo "=> Installed Antigravity skill payload to $SKILLS_DIR/diffless.sh"
+chmod +x "$SKILLS_DIR/scripts/diffless.sh"
+echo "=> Installed Antigravity skill payload to $SKILLS_DIR"
 
 echo ""
 echo "✅ Diffless globally installed and secured!"

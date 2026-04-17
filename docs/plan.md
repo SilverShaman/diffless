@@ -61,7 +61,7 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
 
 ## Phase 7: Antigravity Skill Bindings [COMPLETED]
 **Goal:** Integrate the CLI directly into Google Antigravity as natively callable "Skills".
-- **Action for Developers:** Use the Antigravity interface or the chat input (e.g. `@diffless start feature`) to rapidly invoke CLI abstractions without ever touching a terminal.
+- **Action for Developers:** Use the Antigravity interface or the chat input (e.g. `start feature via diffless`) to rapidly invoke CLI abstractions without ever touching a terminal.
 - **Implementation Considerations:**
   - Author formal Antigravity Skill integration files (e.g., inside `~/.gemini/antigravity/skills/`) that bind the `diffless` CLI commands to the Antigravity execution context.
   - Wire the IDE's Workspace API to automatically react to `diffless switch` directory transitions.
