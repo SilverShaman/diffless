@@ -25,11 +25,13 @@ With these constraints broken, it’s time to move toward an **Agent-Augmented G
 
 To make this workflow effortless for both developers and AI, we are actively building the lightweight **Diffless CLI** in Go to wrap native `git worktree` commands:
 
-- [x] **Phase 1: Sandboxing** 
+- [x] **Phase 1 & 2: Sandboxing & Security** 
   - `diffless start <feature>`: Creates a physically isolated AI sandbox.
   - `diffless switch <feature>`: Transitions context to the isolated path.
+  - `diffless lockdown <feature>`: Hardens directory permissions and creates ephemeral development `.env` credentials.
+  - `diffless audit <feature>`: Scans for binary anomalies.
   - `diffless clean`: Prunes the external worktree safely once merged.
-- [ ] **Phase 2: Semantic Merging**
+- [ ] **Phase 3: Semantic Merging**
   - `diffless sync`: Synthetically and semantically rebases agent code against the main trunk.
 - [ ] **Phase 3: Artifact-Driven PRs**
   - `diffless propose`: Orchestrates the AI to generate markdown plans, architecture diagrams, and testing videos for a pull request.

@@ -16,7 +16,7 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
   - `diffless clean`: Prunes and removes completed worktrees using `git worktree remove` and `git worktree prune`.
 - **Action for AI Agents:** Agents execute `diffless start` to safely experiment, install conflicting dependencies, or crash the local server in their own physical directory without impacting the developer's trunk.
 
-## Phase 2: Security Hardening & Zero-Trust Containment
+## Phase 2: Security Hardening & Zero-Trust Containment [COMPLETED]
 **Goal:** Mathematically enforce the security boundaries of the generated agent sandboxes to prevent privilege escalation or credential harvesting.
 - **Command Implementation:**
   - `diffless lockdown <task-id>`: Hardens the sandbox directory permissions (e.g. `chmod 700`). Automatically generates an ephemeral `.env` stripping out high-privilege production API keys in favor of safe development keys.
@@ -83,6 +83,5 @@ diffless/
 ---
 
 ## Next Steps
-- Begin implementation of Series 2 Security Hardening elements layout (`diffless lockdown` and `diffless audit`).
-- Abstract out the native permission manipulation inside internal libraries.
-- Hook up an LLM API client in Go to process textual merge conflicts synthetically (Phase 3).
+- Begin implementation of Phase 3: Autonomous Semantic Merging (`diffless sync`).
+- Hook up an LLM API client in Go to synthetically rewrite conflicting patches.
