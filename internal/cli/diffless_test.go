@@ -114,6 +114,38 @@ func TestDifflessSandboxing(t *testing.T) {
 		}
 	})
 
+	// === 3.75 Verify `diffless propose` Artifacts ===
+	t.Run("ProposeArtifactCommand", func(t *testing.T) {
+		buf := new(bytes.Buffer)
+		rootCmd.SetOut(buf)
+		rootCmd.SetErr(buf)
+		rootCmd.SetArgs([]string{"propose", taskID})
+		
+		if err := rootCmd.Execute(); err != nil {
+			t.Fatalf("propose command failed: %v", err)
+		}
+
+		// Verify Physical Artifact generation
+		artifactDir := filepath.Join(expectedWorktreePath, ".diffless-artifacts")
+		filesToVerify := []string{
+			"execution_plan.md",
+			"architecture.mermaid",
+			"validation.mp4",
+		}
+
+		for _, f := range filesToVerify {
+			path := filepath.Join(artifactDir, f)
+			if _, err := os.Stat(path); os.IsNotExist(err) {
+				t.Errorf("critical artifact failure: expected asset %s was completely missed", path)
+			}
+		}
+
+		output := buf.String()
+		if !strings.Contains(output, "Bundled Artifact Package successfully") {
+			t.Errorf("expected proposal success trace block, got: %s", output)
+		}
+	})
+
 	// === 4. Verify `diffless clean` ===
 	t.Run("CleanPruningCommand", func(t *testing.T) {
 		buf := new(bytes.Buffer)

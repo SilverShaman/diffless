@@ -27,4 +27,7 @@ func init() {
 
 	// Register commands generated for Phase 4
 	rootCmd.AddCommand(syncCmd)
+
+	// Register commands generated for Phase 5
+	rootCmd.AddCommand(proposeCmd)
 }
