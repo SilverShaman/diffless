@@ -26,11 +26,12 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
 ## Phase 3: Test Harness for Core Sandboxing (Phases 1 & 2)
 **Goal:** Build an automated execution suite in Go (`go test`) that mathematically proves the physical sandboxing and security constraints function safely against a real `.git` database.
 - **Testing Implementation:**
-  - The test framework will dynamically generate a temporary local Git repository (`git init /tmp/diffless-test-repo`).
-  - It will programmatically run `diffless start mock-task`, verifying the `git worktree` spawns securely outside the main repo file-tree.
-  - It will execute `diffless lockdown mock-task` and algorithmically assert that path permissions restrict to `0700` and the ephemeral `.env` generates cleanly without parent credential leaking.
-  - Finally, it will invoke `diffless clean mock-task` to ensure the physical directory and `.git` worktree graph prune gracefully with zero residual pollution.
-- **Action for CI/CD:** Ensures that future Diffless CLI builds cannot regress the isolation boundary, allowing AI agents to experiment freely.
+  - **Isolated Test Data:** The test framework will dynamically generate a temporary local Git repository utilizing Go's `t.TempDir()`. This guarantees the mock `.git` repository safely exists in the OS temp directory, strictly ensuring the test environment never accidentally leaks or tracks into the main `diffless` repository.
+  - **Command Verification:** It will programmatically run `diffless start mock-task`, verifying the `git worktree` spawns securely out of bounds.
+  - **Security Assertion:** It will execute `diffless lockdown mock-task` and algorithmically assert that path permissions restrict to `0700` and the ephemeral `.env` generates securely.
+  - **Detailed Reporting:** The framework will enforce verbose capturing (e.g., executing `go test -v -json`). This captures highly detailed, structured test results for every command execution, allowing CI/CD pipelines (and AI agents) to precisely parse why a native operation failed.
+  - **Teardown:** Finally, it will invoke `diffless clean mock-task` to ensure native directory removal and Git graph pruning.
+- **Action for CI/CD:** Ensures that future Diffless CLI builds cannot regress the isolation boundary, relying on the detailed test output logs as the authoritative truth for agents.
 
 ## Phase 4: Autonomous Semantic Merging
 **Goal:** Abstract away branch drift and complex merges inside the CLI.

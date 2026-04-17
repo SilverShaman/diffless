@@ -16,7 +16,8 @@ func AddWorktree(taskID string, path string) error {
 
 // RemoveWorktree safely removes the given worktree from git
 func RemoveWorktree(path string) error {
-	cmd := exec.Command("git", "worktree", "remove", path)
+	// Must use --force because AI agents will generate untracked artifacts and .env files natively
+	cmd := exec.Command("git", "worktree", "remove", "--force", path)
 	if out, err := cmd.CombinedOutput(); err != nil {
 		return fmt.Errorf("failed to remove worktree: %v, out: %s", err, string(out))
 	}
