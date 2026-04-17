@@ -89,7 +89,7 @@ diffless/
 │   └── artifact/         # Generators for Markdown execution plans & diagram compilation
 ├── docs/                 # Diffless conceptual documentation
 ├── assets/               # Demonstration media
-├── go.mod                # Go module definition
+├── go.mod                # Build `diffless tools export` to instantly dump JSON schemas of all available CLI commands so AI systems can auto-configure their function calling loops directly off the binary.
 ├── LICENSE               # GPL-3.0 Open Source License
 └── README.md             
 ```
@@ -97,5 +97,5 @@ diffless/
 ---
 
 ## Next Steps
-- Core CLI Development Loop is 100% COMPLETE.
-- Shift focus towards community code engagement, Go distribution channels, and organic workflows.
+- Begin implementation of Phase 7: Antigravity Skill Bindings.
+- Map the Go binary into `.gemini/skills/` definitions for native IDE utilization.
