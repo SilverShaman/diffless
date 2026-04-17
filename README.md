@@ -55,3 +55,17 @@ To make this workflow effortless for both developers and AI, we envision the lig
 ## Demo Video
 
 https://github.com/SilverShaman/diffless/raw/main/assets/demo.mp4
+
+---
+
+## Tech Stack & Contributing
+
+The `diffless` CLI is currently being built in **Go (Golang)**. This ensures that the tool is distributed as a lightweight, blazing-fast, compiled binary with zero external dependencies, making it painless to install across operating systems.
+
+### License
+
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. 
+
+We chose GPL-3.0 deliberately: we want to foster a thriving, organic open-source community that builds the standard for AI Git tooling. This license guarantees that the codebase will forever remain open—no commercial entity can fork this project into a closed-source, proprietary competitor. If you modify it, you share it!
+
+We actively welcome contributors! Check out our [Implementation Plan](plan.md) to see where the architecture is heading, and feel free to open a PR.
