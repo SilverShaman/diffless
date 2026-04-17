@@ -63,6 +63,8 @@ For deeper architectural alignment, query or reference the underlying system doc
 - Workspace Commands: https://antigravity.google/docs/command
 - Workspaces: https://antigravity.google/docs/workspaces
 - Skills: https://antigravity.google/docs/skills
+
+**Note:** Our Antigravity implementation follows the official Agent Skills specification documented at https://agentskills.io/specification. All skill architectures inside `diffless` adhere to this open standard.
 </reference_documentation>
 
 <end_of_system_prompt>

@@ -25,26 +25,9 @@ With these constraints broken, it’s time to move toward an **Agent-Augmented G
 
 ## The Diffless CLI (Current Progress)
 
-To make this workflow effortless for both developers and AI, we are actively building the lightweight **Diffless CLI** in Go to wrap native `git worktree` commands:
+To make this workflow effortless for both developers and AI, we are actively building the lightweight **Diffless CLI** in Go to wrap native `git worktree` commands.
 
-- [x] **Phase 1 & 2: Sandboxing & Security** 
-  - `diffless start <feature>`: Creates a physically isolated AI sandbox.
-  - `diffless switch <feature>`: Transitions context to the isolated path.
-  - `diffless lockdown <feature>`: Hardens directory permissions and creates ephemeral development `.env` credentials.
-  - `diffless audit <feature>`: Scans for binary anomalies.
-  - `diffless clean`: Prunes the external worktree safely once merged.
-- [x] **Phase 3: Automated Test Harness**
-  - Execution suite utilizing `t.TempDir()` isolation to mathematically assert worktree security operations and `.env` credentials.
-- [x] **Phase 4: Semantic Merging**
-  - `diffless sync`: Synthetically and semantically rebases agent code against the main trunk utilizing the internal LLM engine.
-- [x] **Phase 5: Artifact-Driven PRs**
-  - `diffless propose`: Orchestrates the AI to securely map out markdown execution plans, architecture system diagrams, and testing validation videos representing successful build constraints natively inside the generated test logs.
-- [x] **Phase 6: Natural Language Execution**
-  - Maps the CLI bounds into functional execution schemas natively accessible by autonomous AI reasoning models.
-- [x] **Phase 7: Antigravity Skill Bindings**
-  - Wraps the exported Phase 6 runtime natively exposing raw `@diffless` IDE chat commands.
-- [x] **Phase 8: Linux Mint Packaging & Deployment**
-  - Universally deploys the `diffless` binary via APT/.deb packages and mounts the IDE interceptor payload directly into `~/.gemini/antigravity/skills/` system-wide.
+We are implementing this CLI via a structured multi-phase architecture plan. You can view the full phase breakdown, including our implementation of physical sandboxes, semantic merging, and Antigravity Skill bindings, in the [Diffless Workflow Implementation Plan](docs/plan.md).
 
 ## Repository Structure
 

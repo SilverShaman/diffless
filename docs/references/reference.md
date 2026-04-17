@@ -917,3 +917,92 @@ Part of the [git\[1\]](https://antigravity.google/docs/git) suite
 
 #### worktree
 
+---
+
+<!-- Document: agentskills-specification.md -->
+# Agent Skills Specification
+
+Source: https://agentskills.io/specification
+
+## Directory structure
+
+```
+skill-name/
+├── SKILL.md        # Required: metadata + instructions
+├── scripts/        # Optional: executable code
+├── references/     # Optional: documentation
+├── assets/         # Optional: templates, resources
+└── ...             # Any additional files or directories
+```
+
+## SKILL.md format
+
+### Frontmatter
+
+Every skill needs a `SKILL.md` file with YAML frontmatter at the top:
+
+```yaml
+---
+name: skill-name
+description: A description of what this skill does and when to use it.
+license: Apache-2.0
+compatibility: Requires git, docker, jq, and access to the internet
+metadata:
+  author: example-org
+  version: "1.0"
+allowed-tools: Bash(git:*) Bash(jq:*) Read
+---
+```
+
+#### name field
+- Must be 1-64 characters
+- May only contain unicode lowercase alphanumeric characters (a-z) and hyphens (-)
+- Must not start or end with a hyphen (-)
+- Must not contain consecutive hyphens (--)
+- Must match the parent directory name
+
+#### description field
+- Must be 1-1024 characters
+- Should describe both what the skill does and when to use it
+- Should include specific keywords that help agents identify relevant tasks
+
+#### license field
+- Specifies the license applied to the skill
+
+#### compatibility field
+- Must be 1-500 characters if provided
+- Should only be included if your skill has specific environment requirements
+
+#### metadata field
+- A map from string keys to string values
+- Clients can use this to store additional properties not defined by the Agent Skills spec
+
+#### allowed-tools field
+- A space-separated string of tools that are pre-approved to run
+
+### Body content
+- Step-by-step instructions
+- Examples of inputs and outputs
+- Common edge cases
+
+### Optional directories
+
+#### scripts/
+- Be self-contained or clearly document dependencies
+- Include helpful error messages
+- Handle edge cases gracefully
+
+#### references/
+- `REFERENCE.md` - Detailed technical reference
+- `FORMS.md` - Form templates or structured data formats
+- Domain-specific files (finance.md, legal.md, etc.)
+
+#### assets/
+- Templates (document templates, configuration templates)
+- Images (diagrams, examples)
+- Data files (lookup tables, schemas)
+
+## Progressive disclosure
+1. Metadata (~100 tokens): The name and description fields are loaded at startup for all skills
+2. Instructions (< 5000 tokens recommended): The full SKILL.md body is loaded when the skill is activated
+3. Resources (as needed): Files (e.g. those in scripts/, references/, or assets/) are loaded only when required
