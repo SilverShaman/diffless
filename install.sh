@@ -30,7 +30,7 @@ fi
 
 # 2. Deploy the Antigravity Skill
 echo "=> Installing global Antigravity Skill..."
-SKILLS_DIR="$HOME/.gemini/skills"
+SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 mkdir -p "$SKILLS_DIR"
 cat << 'EOF' > "$SKILLS_DIR/diffless.sh"
 #!/usr/bin/env bash

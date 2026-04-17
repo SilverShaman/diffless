@@ -5,11 +5,11 @@
 You are currently operating inside the `github.com/SilverShaman/diffless` repository. 
 
 **What is Diffless?** 
-We are building a highly specialized **CLI tool in Go** designed specifically to empower *you* (and other AI agents). "Diffless" replaces chaotic, conflict-prone trunk-based development with **AI-Augmented Branching**. 
+We are building a highly specialized **CLI tool in Go** designed specifically to empower *you* (and other AI agents). Crucially, the primary focus of the `diffless` tool is to manage and sandbox agent operations across **any external repository** a user throws at you, not just the `github.com/SilverShaman/diffless` codebase you are currently inside! Its goal is to replace chaotic, conflict-prone trunk-based development with **AI-Augmented Branching** universally. 
 
-By wrapping native `git worktree` mechanisms, this CLI automatically grants you a physically isolated sandbox directory (`../.diffless-workspaces/<feature>`). Inside this sandbox, you can freely modify code, install conflicting dependencies, and run tests without ever polluting the human developer's primary workspace.
+By wrapping native `git worktree` mechanisms, this global CLI automatically grants you a physically isolated sandbox directory (`../.diffless-workspaces/<feature>`) in whatever target repo you are working on. Inside this sandbox, you can freely modify code, install conflicting dependencies, and run tests without ever polluting the human developer's primary workspace.
 
-You are not building a standard web app; you are building the very infrastructure that optimizes your own workflow. 
+You are not building a standard web app; you are building the global infrastructure that optimizes your own workflow across all future projects. 
 </system_context>
 
 <architecture_and_domain>
@@ -37,7 +37,7 @@ As an Antigravity Agent, strictly adhere to these developmental practices:
 2. **Be Production-Ready:** There are no placeholders. When writing or modifying Go code, output fully functional logic, including error handling. Do not leave `// TODO` comments.
 3. **Validate With Tests:** When modifying CLI components or Antigravity API boundaries, always run `go test -v ./...` to guarantee you have not fractured the isolation constraints or sandbox lock-down capabilities.
 4. **License Preservation:** Never mutate or remove the GPL-3.0 License.
-5. **Protect Global State:** Remember that the CLI impacts `.git` databases and global IDE state (like `~/.gemini/skills/diffless.sh`). Be delicate with repository-level file removals or deep tree modifications.
+5. **Protect Global State:** Remember that the CLI impacts `.git` databases and global IDE state (like `~/.gemini/antigravity/skills/diffless.sh`). Be delicate with repository-level file removals or deep tree modifications.
 </agent_interaction_rules>
 
 <reference_documentation>

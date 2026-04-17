@@ -63,13 +63,13 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
 **Goal:** Integrate the CLI directly into Google Antigravity as natively callable "Skills".
 - **Action for Developers:** Use the Antigravity interface or the chat input (e.g. `@diffless start feature`) to rapidly invoke CLI abstractions without ever touching a terminal.
 - **Implementation Considerations:**
-  - Author formal Antigravity Skill integration files (e.g., inside `.gemini/skills/`) that bind the `diffless` CLI commands to the Antigravity execution context.
+  - Author formal Antigravity Skill integration files (e.g., inside `~/.gemini/antigravity/skills/`) that bind the `diffless` CLI commands to the Antigravity execution context.
   - Wire the IDE's Workspace API to automatically react to `diffless switch` directory transitions.
 
 ## Phase 8: Global Packaging & Deployment [PLANNED]
 **Goal:** Package and deploy the `diffless` CLI and Antigravity skills so they can be installed and used globally across any Git repository on a user's machine.
 - **CLI Distribution:** Compile the Go binary and distribute it via global package structures (e.g., Homebrew, APT, curl scripts) for system-wide access over `$PATH`.
-- **Global Skill Installation:** Configure the Antigravity skill payload to install into the IDE's global configuration directory rather than the local project structure. This guarantees the `@diffless` interceptor functions universally for any workspace.
+- **Global Skill Installation:** Configure the Antigravity skill payload to install into the IDE's global configuration directory (`~/.gemini/antigravity/skills`) rather than the local project structure. This guarantees the `@diffless` interceptor functions universally for any workspace.
 - **Action for Developers:** Run a global install bootstrap that injects the CLI and Antigravity agent skills, unlocking zero-trust isolated sandboxing in any standard `.git` project.
 
 ---
