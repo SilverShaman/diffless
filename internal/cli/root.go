@@ -24,4 +24,7 @@ func init() {
 	// Register commands generated for Phase 2
 	rootCmd.AddCommand(lockdownCmd)
 	rootCmd.AddCommand(auditCmd)
+
+	// Register commands generated for Phase 4
+	rootCmd.AddCommand(syncCmd)
 }

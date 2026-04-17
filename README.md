@@ -33,8 +33,8 @@ To make this workflow effortless for both developers and AI, we are actively bui
   - `diffless clean`: Prunes the external worktree safely once merged.
 - [x] **Phase 3: Automated Test Harness**
   - Execution suite utilizing `t.TempDir()` isolation to mathematically assert worktree security operations and `.env` credentials.
-- [ ] **Phase 4: Semantic Merging**
-  - `diffless sync`: Synthetically and semantically rebases agent code against the main trunk.
+- [x] **Phase 4: Semantic Merging**
+  - `diffless sync`: Synthetically and semantically rebases agent code against the main trunk utilizing the internal LLM engine.
 - [ ] **Phase 5: Artifact-Driven PRs**
   - `diffless propose`: Orchestrates the AI to generate markdown plans, architecture diagrams, and testing videos for a pull request.
 

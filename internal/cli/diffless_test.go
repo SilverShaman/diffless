@@ -97,6 +97,23 @@ func TestDifflessSandboxing(t *testing.T) {
 		}
 	})
 
+	// === 3.5 Verify `diffless sync` ===
+	t.Run("SyncSemanticCommand", func(t *testing.T) {
+		buf := new(bytes.Buffer)
+		rootCmd.SetOut(buf)
+		rootCmd.SetErr(buf)
+		rootCmd.SetArgs([]string{"sync", taskID})
+		
+		if err := rootCmd.Execute(); err != nil {
+			t.Fatalf("sync command failed: %v", err)
+		}
+
+		output := buf.String()
+		if !strings.Contains(output, "semantic patches successfully") {
+			t.Fatalf("expected semantic sync output, got: %s", output)
+		}
+	})
+
 	// === 4. Verify `diffless clean` ===
 	t.Run("CleanPruningCommand", func(t *testing.T) {
 		buf := new(bytes.Buffer)

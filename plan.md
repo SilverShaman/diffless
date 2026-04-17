@@ -33,10 +33,12 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
   - **Teardown:** Finally, it will invoke `diffless clean mock-task` to ensure native directory removal and Git graph pruning.
 - **Action for CI/CD:** Ensures that future Diffless CLI builds cannot regress the isolation boundary, relying on the detailed test output logs as the authoritative truth for agents.
 
-## Phase 4: Autonomous Semantic Merging
+## Phase 4: Autonomous Semantic Merging [COMPLETED]
 **Goal:** Abstract away branch drift and complex merges inside the CLI.
 - **Command Implementation:**
   - `diffless sync`: The CLI checks if the current worktree has drifted from `main`. If significant textual conflicts exist, the CLI pipes the conflicting patches to the AI.
+- **Testing Implementation:**
+  - The `go test` harness invokes `diffless sync mock-task`, validating that the underlying `internal/ai` pipeline correctly processes and resolves branch conflict patches logically without failure, bypassing native Git text-merge failures.
 - **Action for AI Agents:** The agent uses its semantic understanding to rewrite conflicting blocks based on intentionality, automatically resolving merges inside its isolated worktree.
 
 ## Phase 5: Artifact-Driven Reviews
@@ -93,5 +95,5 @@ diffless/
 ---
 
 ## Next Steps
-- Begin implementation of Phase 4: Autonomous Semantic Merging (`diffless sync`).
-- Hook up an LLM API client in Go to process textual merge conflicts synthetically.
+- Begin implementation of Phase 5: Artifact-Driven Reviews (`diffless propose`).
+- Configure the `browser_subagent` Antigravity integration to capture UI validation testing media.
