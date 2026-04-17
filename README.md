@@ -41,8 +41,8 @@ To make this workflow effortless for both developers and AI, we are actively bui
   - Maps the CLI bounds into functional execution schemas natively accessible by autonomous AI reasoning models.
 - [x] **Phase 7: Antigravity Skill Bindings**
   - Wraps the exported Phase 6 runtime natively exposing raw `@diffless` IDE chat commands.
-- [x] **Phase 8: Global Packaging & Deployment**
-  - Universally deploys the `diffless` binary and the IDE interceptor payload (`.gemini/skills/`) system-wide, enabling zero-trust workspaces across ANY local Git repository.
+- [x] **Phase 8: Linux Mint Packaging & Deployment**
+  - Universally deploys the `diffless` binary via APT/.deb packages and mounts the IDE interceptor payload directly into `~/.gemini/antigravity/skills/` system-wide.
 
 ## Repository Structure
 
@@ -69,6 +69,23 @@ To make this workflow effortless for both developers and AI, we are actively bui
 4. Follow the CLI architectural steps detailed in the [Diffless Workflow Plan](docs/plan.md).
 5. Watch the demo video below to see the transition of standard diffing over to Artifacts.
 
+## Installation
+
+### Linux Mint / APT (Recommended Default)
+The official global deployment standard is built natively for Linux Mint. You can compile the `.deb` package securely and register it system-wide by executing:
+
+```bash
+cd packaging/mint
+./install.sh
+```
+This script will safely bind the CLI globally over `$PATH` and register the Antigravity IDE interceptor precisely to `~/.gemini/antigravity/skills/diffless.sh`.
+
+### Generic Global Installation (Fallback Phase)
+For non-Mint systems, use the standard fallback bootstrap directly in the repository root:
+```bash
+./install.sh
+```
+
 ## Usage Guide
 
 ### Google Antigravity Integration (Recommended)
@@ -85,9 +102,6 @@ Because Diffless ships directly with native `.gemini/skills/` proxy bindings, it
 To use the tool natively via standard shells, build the CLI manually and walk through the identical Agent lifecycle:
 
 ```bash
-# Compile and install the CLI globally (including Antigravity interceptors)
-./install.sh
-
 # 1. Start a New Feature Sandbox
 # Creates an isolated, hidden physical Git worktree directory.
 ./diffless start feature-login

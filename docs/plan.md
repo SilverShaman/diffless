@@ -66,11 +66,15 @@ To make this workflow effortless for both human developers and AI IDEs (like Goo
   - Author formal Antigravity Skill integration files (e.g., inside `~/.gemini/antigravity/skills/`) that bind the `diffless` CLI commands to the Antigravity execution context.
   - Wire the IDE's Workspace API to automatically react to `diffless switch` directory transitions.
 
-## Phase 8: Global Packaging & Deployment [PLANNED]
-**Goal:** Package and deploy the `diffless` CLI and Antigravity skills so they can be installed and used globally across any Git repository on a user's machine.
-- **CLI Distribution:** Compile the Go binary and distribute it via global package structures (e.g., Homebrew, APT, curl scripts) for system-wide access over `$PATH`.
+## Phase 8: Linux Mint Packaging & Deployment [COMPLETED]
+**Goal:** Package and deploy the `diffless` CLI and Antigravity skills so they can be installed and used globally across any Git repository specifically on Linux Mint.
+- **CLI Distribution:** Compile the Go binary and build a standard Linux Mint package (e.g., APT/.deb) for system-wide access over `$PATH`. This will be the first default global package structure built.
 - **Global Skill Installation:** Configure the Antigravity skill payload to install into the IDE's global configuration directory (`~/.gemini/antigravity/skills`) rather than the local project structure. This guarantees the `@diffless` interceptor functions universally for any workspace.
-- **Action for Developers:** Run a global install bootstrap that injects the CLI and Antigravity agent skills, unlocking zero-trust isolated sandboxing in any standard `.git` project.
+- **Action for Developers:** Run a global install bootstrap on Linux Mint that injects the CLI and Antigravity agent skills, unlocking zero-trust isolated sandboxing in any standard `.git` project.
+
+## Phase 9: Cross-Platform Packaging & Distribution [FUTURE]
+**Goal:** Expand package support beyond Linux Mint to other major platforms.
+- **Broader Package Managers:** Implement global package structures for macOS (Homebrew), generic fallback scripts (curl), and Windows distribution.
 
 ---
 
@@ -110,6 +114,6 @@ diffless/
 ---
 
 ## Next Steps
-- The Diffless Workflow CLI architecture (Phases 1-7) is **100% COMPLETE**.
-- **ACTIVE:** Implement Phase 8 (Global Packaging & Deployment) to ensure the framework functions seamlessly across any `.git` environment.
-- Move towards marketing outreach, community distribution via Brew/Apt structures, and broad testing adoption.
+- The Diffless Workflow CLI architecture (Phases 1-8) is **100% COMPLETE**.
+- **ACTIVE:** Implement Phase 9 (Cross-Platform Packaging & Distribution) to expand beyond Linux Mint.
+- Move towards marketing outreach, community distribution via Brew/curl setups, and broad testing adoption.
