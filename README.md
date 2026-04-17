@@ -1,5 +1,7 @@
 # Diffless: The AI-Augmented Git Workflow
 
+![Diffless Concept](assets/infographic.webp)
+
 Welcome to the **Diffless Workflow** repository. This project proposes a paradigm shift in version control and development lifecycle in the era of AI-augmented IDEs (such as Google Antigravity, Claude Code, Cursor, Codex, etc.).
 
 ## The Concept
@@ -38,7 +40,11 @@ With these constraints broken, it’s time to move toward an **Agent-Augmented G
 
 ## Getting Started
 
-1. Check out the [Infographic](assets/infographic.webp) for a clear visual representation of this shift.
+1. Check out the infographic above for a clear visual representation of this shift.
 2. Read the full problem statement and concept in [Concept](docs/concept.md).
 3. Follow the rollout steps detailed in the [Diffless Workflow Plan](plan.md).
-4. Watch the [Demo Video](assets/demo.mp4) to see the transition of standard diffing over to Artifacts.
+4. Watch the demo video below to see the transition of standard diffing over to Artifacts.
+
+## Demo Video
+
+https://github.com/SilverShaman/diffless/raw/main/assets/demo.mp4
