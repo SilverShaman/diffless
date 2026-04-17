@@ -37,6 +37,8 @@ To make this workflow effortless for both developers and AI, we are actively bui
   - `diffless sync`: Synthetically and semantically rebases agent code against the main trunk utilizing the internal LLM engine.
 - [x] **Phase 5: Artifact-Driven PRs**
   - `diffless propose`: Orchestrates the AI to securely map out markdown execution plans, architecture system diagrams, and testing validation videos representing successful build constraints natively inside the generated test logs.
+- [ ] **Phase 6: Natural Language Execution**
+  - Maps the CLI bounds into functional execution schemas natively accessible by autonomous AI reasoning models.
 
 ## Repository Structure
 
